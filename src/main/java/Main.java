@@ -3,10 +3,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import Model.*;
-import Model.Character;
+import model.*;
+import model.Character;
 
-public class main {
+public class Main {
     public static void main(String... args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Enter the name of your character: ");

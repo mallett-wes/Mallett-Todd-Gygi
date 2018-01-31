@@ -35,7 +35,7 @@ public class Main {
         System.out.println("Now Let's create your team! Who do you want? (Select one)");
         System.out.println("1. Bill the fisher");
         System.out.println("2. Bob the gatherer");
-        System.out.println("1. mary the child bearer");
+        System.out.println("3. mary the child bearer");
         String choice = reader.readLine();
 
         String teammate = null;

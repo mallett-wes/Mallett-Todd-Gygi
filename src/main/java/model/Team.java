@@ -7,10 +7,15 @@ import java.util.List;
 
 public class Team implements Serializable{
 
+    private String teamName;
     private Pace pace;
     private ArrayList<Character> members = new ArrayList<>();
     private HashMap<SupplyType, Integer> supplies = new HashMap<>();
     private Location currentLocation;
+
+    public String getTeamName() { return teamName; }
+
+    public void setTeamName(String teamName) { this.teamName = teamName; }
 
     public Pace getPace() {
         return pace;
@@ -51,7 +56,8 @@ public class Team implements Serializable{
     @Override
     public String toString() {
         return "Team{" +
-                "pace=" + pace +
+                "name=" + teamName +
+                ", pace=" + pace +
                 ", members=" + members +
                 ", supplies=" + supplies +
                 ", currentLocation=" + currentLocation +

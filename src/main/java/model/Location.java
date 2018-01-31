@@ -1,6 +1,8 @@
 package model;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable{
     private boolean isWildlifePresent;
     private boolean isWaterPresent;
     private boolean isPlantLifePresent;
@@ -8,5 +10,9 @@ public class Location {
     private long amountTraveledFromNauvoo;
     private WeatherCondition weather;
     //private SceneType scene;
+
+    public Location(){
+
+    }
 
 }

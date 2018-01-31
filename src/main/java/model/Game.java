@@ -5,10 +5,6 @@ import java.util.Date;
 
 public class Game implements Serializable {
 
-    public Game(){
-
-    }
-
     private String name;
     private String season;
     private int totalTime;
@@ -44,6 +40,10 @@ public class Game implements Serializable {
 
     public void setTotalTime(int totalTime) {
         this.totalTime = totalTime;
+    }
+
+    public Game(){
+
     }
 
     @Override

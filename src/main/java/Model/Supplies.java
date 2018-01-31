@@ -54,6 +54,10 @@ public class Supplies implements Serializable {
         this.price = price;
     }
 
+    public Supplies(){
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

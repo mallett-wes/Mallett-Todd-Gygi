@@ -1,6 +1,8 @@
 package Model;
 
-public class Character {
+import java.io.Serializable;
+
+public class Character implements Serializable {
 
     private String name;
     private String description;
@@ -55,6 +57,10 @@ public class Character {
 
     public void setMainPlayer(boolean mainPlayer) {
         isMainPlayer = mainPlayer;
+    }
+
+    public Character(){
+
     }
 
     @Override

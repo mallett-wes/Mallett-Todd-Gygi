@@ -44,8 +44,8 @@ public class Team implements Serializable{
         this.currentLocation = currentLocation;
     }
 
-    public Team(Pace pace) {
-        this.pace = pace;
+    public Team(){
+
     }
 
     @Override

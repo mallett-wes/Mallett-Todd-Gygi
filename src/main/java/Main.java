@@ -1,10 +1,15 @@
+package app;
+
+import model.Character;
+import model.Pace;
+import model.SupplyType;
+import model.Team;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import model.*;
-import model.Character;
 
 public class Main {
     public static void main(String... args) throws IOException {
@@ -81,7 +86,7 @@ public class Main {
         supplies.put(SupplyType.FOOD, 10);
         supplies.put(SupplyType.WATER, 100);
         team.setSupplies(supplies);
-        team.setCurrentLocation(new Location());
+        //team.setCurrentLocation(new Location());
         return team;
     }
 }

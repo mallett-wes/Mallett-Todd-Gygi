@@ -9,8 +9,8 @@ public class Team implements Serializable{
 
     private String teamName;
     private Pace pace;
-    private ArrayList<Character> members = new ArrayList<>();
-    private HashMap<SupplyType, Integer> supplies = new HashMap<>();
+    private ArrayList<Character> members = new ArrayList<Character>();
+    private HashMap<SupplyType, Integer> supplies = new HashMap<SupplyType, Integer>();
     private Location currentLocation;
 
     public String getTeamName() { return teamName; }
@@ -99,7 +99,7 @@ public class Team implements Serializable{
     }
 
     public List<Character> getLivingMembers(){
-        ArrayList<Character> livingMembers = new ArrayList<>();
+        ArrayList<Character> livingMembers = new ArrayList<Character>();
 
         for(Character member:this.members){
             if(member.getHealthRating() != 0){

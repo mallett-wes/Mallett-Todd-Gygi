@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Map implements Serializable{
-    private ArrayList<Location> locations = new ArrayList<>();
+    private ArrayList<Location> locations = new ArrayList<Location>();
 
     public Map(){
 

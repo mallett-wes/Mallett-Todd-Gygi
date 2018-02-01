@@ -27,7 +27,7 @@ public class TeamController {
     }
 
     public Team createTeam(Character mainPlayer){
-        ArrayList<Character> teamMembers = new ArrayList<>();
+        ArrayList<Character> teamMembers = new ArrayList<Character>();
         teamView.selectTeamMembers();
         teamMembers.add(characterController.selectTeamMember());
         teamMembers.add(mainPlayer);

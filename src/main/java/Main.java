@@ -57,7 +57,7 @@ public class Main {
         }
 
         Character member1 = createCharacter(teammate, "dancing", "test test", false);
-        ArrayList<Character> teamMembers = new ArrayList<>();
+        ArrayList<Character> teamMembers = new ArrayList<Character>();
         teamMembers.add(mainPlayer);
         teamMembers.add(member1);
 
@@ -82,7 +82,7 @@ public class Main {
         Team team = new Team();
         team.setMembers(members);
         team.setPace(Pace.AVERAGE);
-        HashMap<SupplyType, Integer> supplies = new HashMap<>();
+        HashMap<SupplyType, Integer> supplies = new HashMap<SupplyType, Integer>();
         supplies.put(SupplyType.FOOD, 10);
         supplies.put(SupplyType.WATER, 100);
         team.setSupplies(supplies);

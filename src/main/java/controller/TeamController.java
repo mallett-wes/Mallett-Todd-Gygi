@@ -3,6 +3,7 @@ package controller;
 import model.Character;
 import model.Pace;
 import model.Team;
+import view.CharacterView;
 import view.TeamView;
 
 import java.io.InputStreamReader;
@@ -10,11 +11,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TeamController {
-    Scanner scanner = new Scanner(new InputStreamReader(System.in));
 
-    Team teamModel = new Team();
-    TeamView teamView = new TeamView();
-    CharacterController characterController = new CharacterController();
+    private Team teamModel;
+    private TeamView teamView;
+
+    public TeamController(Team model, TeamView view){
+        teamView = view;
+        teamModel = model;
+    }
 
     public void setName(String name){teamModel.setTeamName((name));}
 
@@ -27,29 +31,18 @@ public class TeamController {
     }
 
     public Team createTeam(Character mainPlayer){
-        ArrayList<Character> teamMembers = new ArrayList<Character>();
+        CharacterController characterController = new CharacterController(new Character(), new CharacterView());
+        ArrayList<Character> teamMembers = new ArrayList<>();
+
         teamView.selectTeamMembers();
-        teamMembers.add(characterController.selectTeamMember());
+
+        teamMembers.add(characterController.selectCharacterForTeam());
         teamMembers.add(mainPlayer);
         setMembers(teamMembers);
 
-        teamView.nameTeam();
-        setName(scanner.nextLine());
+        setName(teamView.nameTeam());
 
-        teamView.setPace();
-        int input = scanner.nextInt();
-
-        switch(input){
-            case 1:
-                setPace(Pace.SLOW);
-                break;
-            case 2:
-                setPace(Pace.AVERAGE);
-                break;
-            case 3:
-                setPace(Pace.FAST);
-                break;
-        }
+        setPace(teamView.setPace());
 
         return this.teamModel;
     }

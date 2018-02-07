@@ -8,10 +8,13 @@ import java.util.Scanner;
 
 public class CharacterController {
 
-    Scanner scanner = new Scanner(new InputStreamReader(System.in));
+    private Character characterModel;
+    private CharacterView characterView;
 
-    Character characterModel = new Character();
-    CharacterView characterView = new CharacterView();
+    public CharacterController(Character model, CharacterView view){
+        characterModel = model;
+        characterView = view;
+    }
 
     public void setCharacterName(String name){
         characterModel.setName(name);
@@ -31,49 +34,30 @@ public class CharacterController {
 
     public Character selectMainCharacter(){
         setCharacterIsMainPlayer(true);
-        setCharacterDescription("This is the main player of the game.");
+        setCharacterDescription("This is the main player of the gameModel.");
 
-        characterView.nameCharacter();
-        setCharacterName(scanner.nextLine());
+        setCharacterName(characterView.nameCharacter());
 
-        characterView.characterSkills();
-        String skill = null;
-        int input = scanner.nextInt();
+        setCharacterSkill(characterView.characterSkills());
 
-        switch(input){
-            case 1:
-                skill = "Hunting";
-                break;
-            case 2:
-                skill = "Fishing";
-                break;
-            case 3:
-                skill = "Dancing";
-                break;
-        }
-
-        setCharacterSkill(skill);
         return this.characterModel;
     }
 
-    public Character selectTeamMember(){
+    public Character selectCharacterForTeam(){
         setCharacterIsMainPlayer(false);
         setCharacterDescription("this is not a main player");
 
-        characterView.displayAllCharacters();
-        int input = scanner.nextInt();
+        String character = characterView.displayAllCharacters();
+        setCharacterName(character);
 
-        switch(input){
-            case 1:
-                setCharacterName("bill");
+        switch(character){
+            case "bill":
                 setCharacterSkill("Bow and Arrow");
                 break;
-            case 2:
-                setCharacterName("bob");
+            case "bob":
                 setCharacterSkill("Dancing");
                 break;
-            case 3:
-                setCharacterName("mary");
+            case "mary":
                 setCharacterSkill("Child bearing");
                 break;
         }

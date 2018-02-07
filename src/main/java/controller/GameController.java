@@ -3,40 +3,42 @@ package controller;
 import model.Character;
 import model.Game;
 import model.Team;
+import view.CharacterView;
 import view.GameView;
+import view.TeamView;
 
-import java.io.InputStreamReader;
+import java.io.CharConversionException;
 import java.util.Date;
-import java.util.Scanner;
 
 public class GameController {
 
-    Scanner scanner = new Scanner(new InputStreamReader(System.in));
+    private Game gameModel;
+    private GameView gameView;
 
-    Game game = new Game();
-    GameView gameView = new GameView();
-    CharacterController characterController = new CharacterController();
-    TeamController teamController = new TeamController();
+    public GameController(Game model, GameView view){
+        gameModel = model;
+        gameView = view;
+    }
 
     public void setGameName(String name){
-        game.setName(name);
+        gameModel.setName(name);
     }
 
     public void setSeason(String season){
-        game.setSeason(season);
+        gameModel.setSeason(season);
     }
 
     public void setStartDate(Date date){
-        game.setDate(date);
+        gameModel.setDate(date);
     }
 
     public void setTotalTime(int time){
-        game.setTotalTime(time);
+        gameModel.setTotalTime(time);
     }
 
     public void runGame(){
-        gameView.welcomeToGame();
-        int selection = scanner.nextInt();
+        int selection = gameView.welcomeToGame();
+
         switch(selection){
             case 1:
                 startNewGame();
@@ -48,6 +50,9 @@ public class GameController {
     }
 
     public void startNewGame(){
+        CharacterController characterController = new CharacterController(new Character(), new CharacterView());
+        TeamController teamController = new TeamController(new Team(), new TeamView());
+
         Character mainPlayer = characterController.selectMainCharacter();
         Team team = teamController.createTeam(mainPlayer);
 

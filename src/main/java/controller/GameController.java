@@ -7,9 +7,6 @@ import view.CharacterView;
 import view.GameView;
 import view.TeamView;
 
-import java.io.CharConversionException;
-import java.util.Date;
-
 public class GameController {
 
     private Game gameModel;
@@ -18,22 +15,6 @@ public class GameController {
     public GameController(Game model, GameView view){
         gameModel = model;
         gameView = view;
-    }
-
-    public void setGameName(String name){
-        gameModel.setName(name);
-    }
-
-    public void setSeason(String season){
-        gameModel.setSeason(season);
-    }
-
-    public void setStartDate(Date date){
-        gameModel.setDate(date);
-    }
-
-    public void setTotalTime(int time){
-        gameModel.setTotalTime(time);
     }
 
     public void runGame(){

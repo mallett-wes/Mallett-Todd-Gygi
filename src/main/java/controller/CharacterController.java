@@ -16,49 +16,33 @@ public class CharacterController {
         characterView = view;
     }
 
-    public void setCharacterName(String name){
-        characterModel.setName(name);
-    }
-
-    public void setCharacterDescription(String description){
-        characterModel.setDescription(description);
-    }
-
-    public void setCharacterIsMainPlayer(boolean isMainPlayer){
-        characterModel.setMainPlayer(isMainPlayer);
-    }
-
-    public void setCharacterSkill(String skill){
-        characterModel.setSpecialSkill(skill);
-    }
-
     public Character selectMainCharacter(){
-        setCharacterIsMainPlayer(true);
-        setCharacterDescription("This is the main player of the gameModel.");
+        characterModel.setMainPlayer(true);
+        characterModel.setDescription("This is the main player of the gameModel.");
 
-        setCharacterName(characterView.nameCharacter());
+        characterModel.setName(characterView.nameCharacter());
 
-        setCharacterSkill(characterView.characterSkills());
+        characterModel.setSpecialSkill(characterView.characterSkills());
 
         return this.characterModel;
     }
 
     public Character selectCharacterForTeam(){
-        setCharacterIsMainPlayer(false);
-        setCharacterDescription("this is not a main player");
+        characterModel.setMainPlayer(false);
+        characterModel.setDescription("this is not a main player");
 
         String character = characterView.displayAllCharacters();
-        setCharacterName(character);
+        characterModel.setName(character);
 
         switch(character){
             case "bill":
-                setCharacterSkill("Bow and Arrow");
+                characterModel.setSpecialSkill("Bow and Arrow");
                 break;
             case "bob":
-                setCharacterSkill("Dancing");
+                characterModel.setSpecialSkill("Dancing");
                 break;
             case "mary":
-                setCharacterSkill("Child bearing");
+                characterModel.setSpecialSkill("Child bearing");
                 break;
         }
 

@@ -1,8 +1,5 @@
 package view;
 
-import controller.GameController;
-import model.Game;
-
 import java.io.InputStreamReader;
 import java.util.Scanner;
 

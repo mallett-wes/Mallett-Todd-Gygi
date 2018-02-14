@@ -12,7 +12,16 @@ public class Team implements Serializable{
     private ArrayList<Character> members = new ArrayList<Character>();
     private HashMap<SupplyType, Integer> supplies = new HashMap<SupplyType, Integer>();
     //private Location currentLocation;
-
+    private double moneyInPocket;
+    
+    public double getMoneyInPocket() {
+        return moneyInPocket;
+    }
+    
+    public void setMoneyInPocket(double moneyInPocket) {
+        this.moneyInPocket = moneyInPocket;
+    }
+    
     public String getTeamName() { return teamName; }
 
     public void setTeamName(String teamName) { this.teamName = teamName; }

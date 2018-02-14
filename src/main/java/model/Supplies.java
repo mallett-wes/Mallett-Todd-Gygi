@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Supplies implements Serializable {
 
@@ -8,7 +9,7 @@ public class Supplies implements Serializable {
     private int livestockHealth;
     private double quantityInStock;
     private double requiredAmount;
-    private float price;
+    private double price;
 
     public Supplies(SupplyType supplyType) {
         this.supplyType = supplyType;
@@ -46,11 +47,11 @@ public class Supplies implements Serializable {
         this.requiredAmount = requiredAmount;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -68,22 +69,19 @@ public class Supplies implements Serializable {
         if (livestockHealth != supplies.livestockHealth) return false;
         if (Double.compare(supplies.quantityInStock, quantityInStock) != 0) return false;
         if (Double.compare(supplies.requiredAmount, requiredAmount) != 0) return false;
-        if (Float.compare(supplies.price, price) != 0) return false;
+        if (Double.compare(supplies.price, price) != 0) return false;
         return supplyType == supplies.supplyType;
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = supplyType.hashCode();
-        result = 31 * result + livestockHealth;
-        temp = Double.doubleToLongBits(quantityInStock);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(requiredAmount);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (price != +0.0f ? Float.floatToIntBits(price) : 0);
-        return result;
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.supplyType);
+        hash = 37 * hash + this.livestockHealth;
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.quantityInStock) ^ (Double.doubleToLongBits(this.quantityInStock) >>> 32));
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.requiredAmount) ^ (Double.doubleToLongBits(this.requiredAmount) >>> 32));
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
+        return hash;
     }
 
     @Override

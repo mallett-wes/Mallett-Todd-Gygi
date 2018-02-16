@@ -1,80 +1,99 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
-public class Game implements Serializable {
-
+/**
+ *
+ * @author hiramtodd
+ */
+public class Game implements Serializable{
     private String name;
-    private String season;
     private int totalTime;
+    private String season;
     private Date date;
-
+    
     public String getName() {
-        return name;
+        return this.name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getSeason() {
-        return season;
-    }
-
-    public void setSeason(String season) {
-        this.season = season;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
+    
     public int getTotalTime() {
-        return totalTime;
+        return this.totalTime;
     }
-
+    
     public void setTotalTime(int totalTime) {
         this.totalTime = totalTime;
     }
-
-    public Game(){
-
+    
+    public String getSeason() {
+        return this.season;
+    }
+    
+    public void setSeason(String season) {
+        this.season = season;
+    }
+    
+    public Date getDate() {
+        return this.date;
+    }
+    
+    public void setDate (Date date) {
+        this.date = date;
     }
 
     @Override
     public String toString() {
-        return "Game{" +
-                "name='" + name + '\'' +
-                ", season='" + season + '\'' +
-                ", totalTime=" + totalTime +
-                ", date=" + date +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Game game = (Game) o;
-
-        if (totalTime != game.totalTime) return false;
-        if (name != null ? !name.equals(game.name) : game.name != null) return false;
-        if (season != null ? !season.equals(game.season) : game.season != null) return false;
-        return date != null ? date.equals(game.date) : game.date == null;
+        return "Game{" + "name=" + name + ", totalTime=" + totalTime + ", season=" + season + ", date=" + date + '}';
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (season != null ? season.hashCode() : 0);
-        result = 31 * result + totalTime;
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        return result;
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.name);
+        hash = 67 * hash + this.totalTime;
+        hash = 67 * hash + Objects.hashCode(this.season);
+        hash = 67 * hash + Objects.hashCode(this.date);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Game other = (Game) obj;
+        if (this.totalTime != other.totalTime) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.season, other.season)) {
+            return false;
+        }
+        if (!Objects.equals(this.date, other.date)) {
+            return false;
+        }
+        return true;
+    }
+    
+    public Game() {
+        
     }
 }

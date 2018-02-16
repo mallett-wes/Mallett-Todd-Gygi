@@ -11,10 +11,16 @@ public class Team implements Serializable{
     private Pace pace;
     private ArrayList<Character> members = new ArrayList<Character>();
     private HashMap<SupplyType, Integer> supplies = new HashMap<SupplyType, Integer>();
-    private Location currentLocation;
-    public float money;
+    //private Location currentLocation;
+    private double moneyInPocket;
 
+    public double getMoneyInPocket() {
+        return moneyInPocket;
+    }
 
+    public void setMoneyInPocket(double moneyInPocket) {
+        this.moneyInPocket = moneyInPocket;
+    }
 
     public String getTeamName() { return teamName; }
 
@@ -44,13 +50,13 @@ public class Team implements Serializable{
         this.supplies = supplies;
     }
 
-    public Location getCurrentLocation() {
-        return currentLocation;
-    }
-
-    public void setCurrentLocation(Location currentLocation) {
-        this.currentLocation = currentLocation;
-    }
+//    public Location getCurrentLocation() {
+//        return currentLocation;
+//    }
+//
+//    public void setCurrentLocation(Location currentLocation) {
+//        this.currentLocation = currentLocation;
+//    }
 
     public Team(){
 
@@ -63,7 +69,7 @@ public class Team implements Serializable{
                 ", pace=" + pace +
                 ", members=" + members +
                 ", supplies=" + supplies +
-                ", currentLocation=" + currentLocation +
+                //", currentLocation=" + currentLocation +
                 '}';
     }
 
@@ -74,10 +80,10 @@ public class Team implements Serializable{
 
         Team team = (Team) o;
 
+        if (teamName != null ? !teamName.equals(team.teamName) : team.teamName != null) return false;
         if (pace != team.pace) return false;
-        if (!members.equals(team.members)) return false;
-        if (supplies != null ? !supplies.equals(team.supplies) : team.supplies != null) return false;
-        return currentLocation.equals(team.currentLocation);
+        if (members != null ? !members.equals(team.members) : team.members != null) return false;
+        return supplies != null ? supplies.equals(team.supplies) : team.supplies == null;
     }
 
     @Override
@@ -85,7 +91,7 @@ public class Team implements Serializable{
         int result = pace.hashCode();
         result = 31 * result + members.hashCode();
         result = 31 * result + (supplies != null ? supplies.hashCode() : 0);
-        result = 31 * result + currentLocation.hashCode();
+        //result = 31 * result + currentLocation.hashCode();
         return result;
     }
 

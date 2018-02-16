@@ -7,7 +7,7 @@ import view.CharacterView;
 
 import static org.junit.Assert.*;
 
-public class Controller {
+public class CharacterControllerTests {
 
     CharacterController controller;
 

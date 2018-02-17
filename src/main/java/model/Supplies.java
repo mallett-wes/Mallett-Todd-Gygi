@@ -54,7 +54,7 @@ public class Supplies implements Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
-
+    
     public Supplies(){
 
     }

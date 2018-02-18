@@ -52,8 +52,6 @@ public class supplyWeightControllerTest {
         Supplies expResult = null;
         Supplies result = instance.supplyWeight(supply, quantity, team);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

@@ -40,15 +40,16 @@ public class StartProgramView {
     private boolean doAction(String[] inputs){
         String mainCharacterName = inputs[0].toString();
         CharacterController characterController = new CharacterController();
-        try{
-            characterController.selectMainCharacter(mainCharacterName);
-        }catch (Exception e){
-            System.out.println(e.getMessage().toString());
+        
+        Character mainCharacter = characterController.selectMainCharacter(mainCharacterName);
+        if(mainCharacter.equals(null)){
+            System.out.println("There was a problem saving your player. Please try again.");
             displayStartProgramView();
-        }finally{
+        }else{
             System.out.println("Welcome to the game, " + mainCharacterName + "!");
             System.out.println("We hope you have lots of fun!");
         }
+
         MainMenuView mainMenuView = new MainMenuView();
         return true;
 

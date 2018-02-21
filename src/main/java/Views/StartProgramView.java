@@ -21,13 +21,13 @@ public class StartProgramView {
         String[] input = new String[1];
         System.out.println("Welcome to Mormon Trek!");
         System.out.println("Please enter the name of your character: ");
-        String result = scanner.nextLine().trim().toLowerCase();
+        String result = scanner.nextLine().trim().toUpperCase();
 
         while(result.length() < 1){
-            System.out.println("You must enter a non-blank value or enter q to quit.");
-            result = scanner.nextLine().trim().toLowerCase();
+            System.out.println("You must enter a non-blank value or enter Q to quit.");
+            result = scanner.nextLine().trim().toUpperCase();
 
-            if(result.equals("q")) {
+            if(result.equals("Q")) {
                 System.exit(0);
             }
         }
@@ -51,6 +51,7 @@ public class StartProgramView {
         }
 
         MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.displayMainMenuView();
         return true;
 
     }

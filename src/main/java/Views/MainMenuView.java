@@ -30,11 +30,11 @@ public class MainMenuView {
         System.out.println("Restart existing game: r");
         System.out.println("Get help on how to play the game: h");
         System.out.println("Exit: e");
-        String result = scanner.nextLine().trim().toLowerCase();
+        String result = scanner.nextLine().trim().toUpperCase();
 
         while(result.length() < 1){
             System.out.println("You must enter a letter to choose an option!.");
-            result = scanner.nextLine().trim().toLowerCase();
+            result = scanner.nextLine().trim().toUpperCase();
 
             if(result.equals("e")) {
                 System.exit(0);
@@ -60,22 +60,24 @@ public class MainMenuView {
     
     
     private boolean doAction(String[] inputs){
-        char menuItem;
+        String menuItem;
         
-        menuItem = String.charAt[0];
-        menuItem = menuItem.toUpperCase;
+        menuItem =inputs[0];
         switch(menuItem) {
-            case 'N': startNewGame();
+            case "N": 
+                startNewGame();
                 break;
                 
-            case 'R': restartGame();
+            case "R": 
+                restartGame();
                 break;
                 
-            case 'H': getHelp();
+            case "H": 
+                getHelp();
                 break;
                 
-            case 'E': return true;
-                break;
+            case "E": 
+                return true;
                
             default: System.out.println("Invalid menu item");
         }

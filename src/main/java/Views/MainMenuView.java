@@ -5,7 +5,6 @@
  */
 package Views;
 
-import Controller.CharacterController;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
@@ -14,10 +13,10 @@ import java.util.Scanner;
  * @author wesmallett
  */
 public class MainMenuView {
-        Scanner scanner = new Scanner(new InputStreamReader(System.in));
+    private Scanner scanner;
 
     public MainMenuView(){
-
+        scanner = new Scanner(new InputStreamReader(System.in));
     }
 
     public void displayMainMenuView(){
@@ -26,17 +25,19 @@ public class MainMenuView {
 
     private String[] getInputs(){
         String[] input = new String[1];
-        System.out.println("Start new game: n");
-        System.out.println("Restart existing game: r");
-        System.out.println("Get help on how to play the game: h");
-        System.out.println("Exit: e");
+        System.out.println("What would you like to do?");
+        System.out.println("N - Start new game");
+        System.out.println("R - Restart existing game");
+        System.out.println("H - Get help on how to play the game");
+        System.out.println("Q - Exit");
         String result = scanner.nextLine().trim().toUpperCase();
 
         while(result.length() < 1){
-            System.out.println("You must enter a letter to choose an option!.");
+            System.out.println("You must enter a letter to choose an option or enter Q to quit.");
             result = scanner.nextLine().trim().toUpperCase();
 
-            if(result.equals("e")) {
+            if(result.equals("Q")) {
+                System.out.println("Thanks for playing! Good bye!");
                 System.exit(0);
             }
         }
@@ -47,15 +48,18 @@ public class MainMenuView {
     }
 
     private void startNewGame(){
-    
+        GameView gameView = new GameView();
+        gameView.display();   
     };
     
     private void restartGame(){
-    
+        StartExistingGameView startExistingGameView = new StartExistingGameView();
+        startExistingGameView.display();
     };
     
     private void getHelp(){
-    
+        GettingHelpView helpView = new GettingHelpView();
+        helpView.display();   
     };
     
     
@@ -63,6 +67,7 @@ public class MainMenuView {
         String menuItem;
         
         menuItem =inputs[0];
+
         switch(menuItem) {
             case "N": 
                 startNewGame();
@@ -75,6 +80,10 @@ public class MainMenuView {
             case "H": 
                 getHelp();
                 break;
+            
+            case "Q":
+                System.out.println("Thanks for playing! Good bye!");
+                System.exit(0);
                 
             case "E": 
                 return true;

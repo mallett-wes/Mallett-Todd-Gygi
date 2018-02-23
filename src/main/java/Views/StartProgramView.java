@@ -1,16 +1,17 @@
 package Views;
 
 import Controller.CharacterController;
+import app.Main;
 import model.Character;
 
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class StartProgramView {
-    Scanner scanner = new Scanner(new InputStreamReader(System.in));
+    private Scanner scanner;
 
     public StartProgramView(){
-
+        scanner = new Scanner(new InputStreamReader(System.in));
     }
 
     public void displayStartProgramView(){
@@ -42,10 +43,13 @@ public class StartProgramView {
         CharacterController characterController = new CharacterController();
         
         Character mainCharacter = characterController.selectMainCharacter(mainCharacterName);
-        if(mainCharacter.equals(null)){
+       
+        if(mainCharacter == null){
             System.out.println("There was a problem saving your player. Please try again.");
             displayStartProgramView();
         }else{
+            Main.setCharacter(mainCharacter);
+            
             System.out.println("Welcome to the game, " + mainCharacterName + "!");
             System.out.println("We hope you have lots of fun!");
         }
@@ -53,6 +57,5 @@ public class StartProgramView {
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.displayMainMenuView();
         return true;
-
     }
 }

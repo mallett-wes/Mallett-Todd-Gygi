@@ -18,6 +18,15 @@ public class Game implements Serializable{
     private int totalTime;
     private String season;
     private Date date;
+    private Character mainPlayer;
+
+    public Character getMainPlayer() {
+        return mainPlayer;
+    }
+
+    public void setMainPlayer(Character mainPlayer) {
+        this.mainPlayer = mainPlayer;
+    }
     
     public String getName() {
         return this.name;

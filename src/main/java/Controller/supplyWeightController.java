@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import java.io.InputStreamReader;
+import java.util.Scanner;
 import model.Supplies;
 import model.Team;
 
@@ -21,7 +23,9 @@ public class supplyWeightController {
 double weight;
 
     //Prompt user for the objects mass
-    input = System.out.println(null, "Enter number amount ");
+    System.out.println("Enter number amount ");
+    Scanner scanner = new Scanner(new InputStreamReader(System.in));
+    input = scanner.nextLine();
 
     //Convert user input to data-type double because
     // JOptionPane returns data-type String.
@@ -33,15 +37,15 @@ double weight;
     //The if cases to display if supply is too heavy, not enough, or just right'.
 
     if(weight > 500){
-    throw new Exception(null, "Supply exceeds weight limit!");
+    throw new Exception("Supply exceeds weight limit!");
     }
 
     else if (weight < 1) {
-        throw new Exception(null, "Supply is depleted.");
+        throw new Exception("Supply is depleted.");
     }
 
     else {
-    throw new Exception(null, "Supplies do not exceed weight limit!");
+    throw new Exception("Supplies do not exceed weight limit!");
     }
    }
 }

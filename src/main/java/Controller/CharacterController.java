@@ -6,12 +6,29 @@
 package Controller;
 
 import model.Pace;
+import model.Character;
 
 /**
  *
  * @author wesmallett
  */
 public class CharacterController {
+    
+    public Character selectMainCharacter(String name){
+        Character character = new Character();
+        character.setMainPlayer(true);
+        character.setDescription("This is the main player of the gameModel.");
+
+        if(name.equals(null) || name.equals("")){
+            return null;
+        }
+        character.setName(name);
+
+        //characterModel.setSpecialSkill(characterView.characterSkills());
+
+        //return this.characterModel;
+        return character;
+    }
 
     public int calculateHealth(Pace pace, int lastNourishment, int characterStamina) throws Exception {
         int paceFactor = 1;

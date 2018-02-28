@@ -49,7 +49,7 @@ public class MainMenuView {
 
     private void startNewGame(){
         GameView gameView = new GameView();
-        gameView.display();   
+        gameView.display();
     };
     
     private void restartGame(){
@@ -59,7 +59,7 @@ public class MainMenuView {
     
     private void getHelp(){
         GettingHelpView helpView = new GettingHelpView();
-        helpView.display();   
+        helpView.display();
     };
     
     

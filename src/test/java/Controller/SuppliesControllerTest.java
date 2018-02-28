@@ -19,9 +19,9 @@ import static org.junit.Assert.*;
  *
  * @author hiramtodd
  */
-public class suppliesControlerTest {
+public class SuppliesControllerTest {
     
-    public suppliesControlerTest() {
+    public SuppliesControllerTest() {
     }
     
     @BeforeClass
@@ -52,7 +52,7 @@ public class suppliesControlerTest {
         int quantity = 5;
         Team team = new Team();
         team.setMoneyInPocket(100.00);
-        suppliesControler instance = new suppliesControler();
+        SuppliesController instance = new SuppliesController();
         Supplies result = null;
         try {
             result = instance.purchaseSupplies(supply, quantity, team);
@@ -70,7 +70,7 @@ public class suppliesControlerTest {
         int quantity = 5;
         Team team = new Team();
         team.setMoneyInPocket(100.00);
-        suppliesControler instance = new suppliesControler();
+        SuppliesController instance = new SuppliesController();
         Supplies result = null;
         String expectedResult = "You must select a valid supply.";
         try {
@@ -90,7 +90,7 @@ public class suppliesControlerTest {
         int quantity = 0;
         Team team = new Team();
         team.setMoneyInPocket(100.00);
-        suppliesControler instance = new suppliesControler();
+        SuppliesController instance = new SuppliesController();
         Supplies result = null;
         String expectedResult = "You must enter a quantity greater than 0.";
         try {
@@ -108,7 +108,7 @@ public class suppliesControlerTest {
         supply.setSupplyType(SupplyType.OX);
         int quantity = 1;
         Team team = null;
-        suppliesControler instance = new suppliesControler();
+        SuppliesController instance = new SuppliesController();
         Supplies result = null;
         String expectedResult = "You must be on a team to purchase supplies.";
         try {
@@ -127,7 +127,7 @@ public class suppliesControlerTest {
         int quantity = 5;
         Team team = new Team();
         team.setMoneyInPocket(25.00);
-        suppliesControler instance = new suppliesControler();
+        SuppliesController instance = new SuppliesController();
         Supplies result = null;
         String expectedResult = "You do not have enough money to purchase these supplies.";
         try {
@@ -146,7 +146,7 @@ public class suppliesControlerTest {
         int quantity = 5;
         Team team = new Team();
         team.setMoneyInPocket(100.00);
-        suppliesControler instance = new suppliesControler();
+        SuppliesController instance = new SuppliesController();
         Supplies result = null;
         String expectedResult = "This supply is unavailable";
         try {
@@ -165,7 +165,7 @@ public class suppliesControlerTest {
         int quantity = 5;
         Team team = new Team();
         team.setMoneyInPocket(50.00);
-        suppliesControler instance = new suppliesControler();
+        SuppliesController instance = new SuppliesController();
         Supplies result = null;
         try {
             result = instance.purchaseSupplies(supply, quantity, team);

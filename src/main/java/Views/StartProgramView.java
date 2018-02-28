@@ -51,6 +51,7 @@ public class StartProgramView {
             Main.setCharacter(mainCharacter);
             
             mainCharacter.setDescription("TEST");
+            mainCharacter.setStamina(8);
             
             System.out.println("Welcome to the game, " + mainCharacterName + "!");
             System.out.println("We hope you have lots of fun!");

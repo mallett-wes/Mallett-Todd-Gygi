@@ -26,6 +26,9 @@ public class GameView {
         do{
             valid = doAction(getInputs());
         }while(!valid);
+        
+        SelectTeamView selectTeamView = new SelectTeamView();
+        selectTeamView.displaySelectTeamView();
     }
     
     private String[] getInputs(){

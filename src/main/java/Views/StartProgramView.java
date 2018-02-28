@@ -50,6 +50,8 @@ public class StartProgramView {
         }else{
             Main.setCharacter(mainCharacter);
             
+            mainCharacter.setDescription("TEST");
+            
             System.out.println("Welcome to the game, " + mainCharacterName + "!");
             System.out.println("We hope you have lots of fun!");
         }

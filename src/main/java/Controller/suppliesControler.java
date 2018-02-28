@@ -27,7 +27,6 @@ public class suppliesControler {
         throw new Exception("This supply is unavailable");
     }
 
-
     double totalCostOfSupply = supply.getPrice() * quantity;
     double moneyInPocket = team.getMoneyInPocket();
 

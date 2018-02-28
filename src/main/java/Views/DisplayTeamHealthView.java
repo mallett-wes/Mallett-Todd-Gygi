@@ -81,19 +81,17 @@ public class DisplayTeamHealthView {
         String menuItem;
         
         menuItem =inputs[0];
-
-        switch(menuItem) {
-            case "E": 
-                GameMenuView gameMenuView = new GameMenuView();
-                gameMenuView.displayGameMenuView();
-                break;
+        
+        if(menuItem.equals("E")){
+            GameMenuView gameMenuView = new GameMenuView();
+            gameMenuView.displayGameMenuView();
             
-            case "M":
-                MainMenuView mainMenuView = new MainMenuView();
-                mainMenuView.displayMainMenuView();
-                break;
-               
-            default: System.out.println("Invalid menu item");
+        }else if(menuItem.equals("M")){
+            MainMenuView mainMenuView = new MainMenuView();
+            mainMenuView.displayMainMenuView();
+            
+        }else{
+            System.out.println("Invalid menu item");
         }
         
         return true;

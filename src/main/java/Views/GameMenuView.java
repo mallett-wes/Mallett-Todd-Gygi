@@ -12,34 +12,30 @@ import java.util.Scanner;
  *
  * @author wesmallett
  */
-public class MainMenuView {
+public class GameMenuView {
     private Scanner scanner;
 
-    public MainMenuView(){
+    public GameMenuView(){
         scanner = new Scanner(new InputStreamReader(System.in));
     }
 
-    public void displayMainMenuView(){
+    public void displayGameMenuView(){
         doAction(getInputs());
     }
 
     private String[] getInputs(){
         String[] input = new String[1];
         System.out.println("What would you like to do?");
-        System.out.println("N - Start new game");
-        System.out.println("R - Restart existing game");
-        System.out.println("H - Get help on how to play the game");
-        System.out.println("Q - Exit");
+        System.out.println("M - Move Forward");
+        System.out.println("R - Rest");
+        System.out.println("P - Change Pace");
+        System.out.println("H - View Your Team's Health");
+        System.out.println("E - Main Menu");
         String result = scanner.nextLine().trim().toUpperCase();
 
         while(result.length() < 1){
-            System.out.println("You must enter a letter to choose an option or enter Q to quit.");
+            System.out.println("You must enter a letter to choose an option.");
             result = scanner.nextLine().trim().toUpperCase();
-
-            if(result.equals("Q")) {
-                System.out.println("Thanks for playing! Good bye!");
-                System.exit(0);
-            }
         }
 
         input[0] = result;
@@ -47,46 +43,49 @@ public class MainMenuView {
         return input;
     }
 
-    private void startNewGame(){
-        GameView gameView = new GameView();
-        gameView.display();
+    private void changePace(){
+        System.out.println("Pace Change");
     };
     
-    private void restartGame(){
-        StartExistingGameView startExistingGameView = new StartExistingGameView();
-        startExistingGameView.display();
+    private void moveForward(){
+        System.out.println("Moving on up");
     };
     
-    private void getHelp(){
-        GettingHelpView helpView = new GettingHelpView();
-        helpView.display();
+    private void rest(){
+        System.out.println("RESTING.....STUB");
     };
     
-    
+    private void displayHealth(){
+        DisplayTeamHealthView displayTeamHealthView = new DisplayTeamHealthView();
+        displayTeamHealthView.display();
+    }
+      
     private boolean doAction(String[] inputs){
         String menuItem;
         
         menuItem =inputs[0];
 
         switch(menuItem) {
-            case "N": 
-                startNewGame();
+            case "M": 
+                moveForward();
                 break;
                 
             case "R": 
-                restartGame();
+                rest();
+                break;
+                
+            case "P": 
+                changePace();
                 break;
                 
             case "H": 
-                getHelp();
+                displayHealth();
                 break;
             
-            case "Q":
-                System.out.println("Thanks for playing! Good bye!");
-                System.exit(0);
-                
-            case "E": 
-                return true;
+            case "E":
+                MainMenuView mainMenuView = new MainMenuView();
+                mainMenuView.displayMainMenuView();
+                break;
                
             default: System.out.println("Invalid menu item");
         }

@@ -12,7 +12,7 @@ import model.Team;
  *
  * @author hiramtodd
  */
-public class suppliesControler {
+public class SuppliesController {
     public Supplies purchaseSupplies(Supplies supply, int quantity, Team team) throws Exception {
     if(quantity < 1){
         throw new Exception("You must enter a quantity greater than 0.");
@@ -26,7 +26,6 @@ public class suppliesControler {
     if(supply.getPrice() < 1){
         throw new Exception("This supply is unavailable");
     }
-
 
     double totalCostOfSupply = supply.getPrice() * quantity;
     double moneyInPocket = team.getMoneyInPocket();

@@ -15,37 +15,34 @@ import model.Team;
  * @author hiramtodd
  */
 public class supplyWeightController {
+
     public Supplies supplyWeight(Supplies supply, int quantity, Team team) throws Exception {
-     //Prompt user input for declaring value
-    String input;
-   
-    //Prompt user input for declaring value
-double weight;
+        //Prompt user input for declaring value
+        String input;
 
-    //Prompt user for the objects mass
-    System.out.println("Enter number amount ");
-    Scanner scanner = new Scanner(new InputStreamReader(System.in));
-    input = scanner.nextLine();
+        //Prompt user input for declaring value
+        double weight;
 
-    //Convert user input to data-type double because
-    // JOptionPane returns data-type String.
-    double amount = Double.parseDouble(input);
+        //Prompt user for the objects mass
+        System.out.println("Enter number amount ");
+        Scanner scanner = new Scanner(new InputStreamReader(System.in));
+        input = scanner.nextLine();
 
-    //Calculates weight
-    weight = amount * 10;
+        //Convert user input to data-type double because
+        // JOptionPane returns data-type String.
+        double amount = Double.parseDouble(input);
 
-    //The if cases to display if supply is too heavy, not enough, or just right'.
+        //Calculates weight
+        weight = amount * 10;
 
-    if(weight > 500){
-    throw new Exception("Supply exceeds weight limit!");
+        //The if cases to display if supply is too heavy, not enough, or just right'.
+        if (weight > 500) {
+            throw new Exception("Supply exceeds weight limit!");
+        } else if (weight < 1) {
+            throw new Exception("Supply is depleted.");
+        } else {
+            throw new Exception("Supplies do not exceed weight limit!");
+        }
     }
 
-    else if (weight < 1) {
-        throw new Exception("Supply is depleted.");
-    }
-
-    else {
-    throw new Exception("Supplies do not exceed weight limit!");
-    }
-   }
 }

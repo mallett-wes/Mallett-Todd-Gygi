@@ -14,7 +14,9 @@ public class RiverSceneController {
   
  
     private double depth;
-    private String namedSeason = season.getSeason(); 
+    private String namedSeason = Game.getSeason();
+
+   
     
     public double calculateRiverDepth(double depth, String namedSeason){
         if(namedSeason=="Winter"){
@@ -26,7 +28,7 @@ public class RiverSceneController {
         }else if(namedSeason =="Summer"){
             depth = .45 * 5;
         }else {
-            throw new Exception("That is not an acceptable season");
+            System.out.println("That is not an acceptable season");
         }
         
         

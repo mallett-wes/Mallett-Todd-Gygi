@@ -14,9 +14,9 @@ import java.io.InputStreamReader;
 public class MainMenuView extends View{
 
     public MainMenuView(){
-        super("What would you like to do?" + "/nN - Start new game"
-        +"/nR - Restart existing game" +"/nH - Get help on how to play the game"
-        +"/nQ - Exit");
+        super("What would you like to do?" + "\nN - Start new game"
+        +"\nR - Restart existing game" +"\nH - Get help on how to play the game"
+        +"\nQ - Exit");
     }
 
 

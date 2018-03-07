@@ -5,34 +5,21 @@
  */
 package Views;
 
-import java.util.Scanner;
 /**
  *
  * @author hiramtodd
  */
-public class RiverCrossingView {
-    private Scanner scanner;
+public class RiverCrossingView extends View{
     
-    public void displayRiverCrossingView() {
-        boolean done = false;
-        do {
-           done = doAction(getInputs());
-        }
-        while(done = false);
-}
-    private String getInputs(){
-        System.out.println("You have reach a river!");
-        System.out.println("If you wish too cross the river, enter 'C'");
-        System.out.println("If not, enter 'N' and return to camp.");
-        String input = scanner.nextLine().trim().toUpperCase();
-        return input;
+    public RiverCrossingView(){
+        super("You have reached a river!" +
+        "\nIf you wish too cross the river, enter 'C'" +
+        "\nIf not, enter 'N' and return to camp.");
     }
     
-    private boolean doAction(String input){
-        String selection;
-        selection = input;
-        
-        switch(selection){
+    @Override   
+    public boolean doAction(String input){
+        switch(input){
             case "C":
                 GameView GameView = new GameView();
                 break;

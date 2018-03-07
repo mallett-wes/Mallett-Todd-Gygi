@@ -12,7 +12,7 @@ package Views;
 public class GeneralStoreView extends View {
    GeneralStoreView(){
        super("Welcome to the General Store" +
-             "/nThis will be different in the final version");
+             "\nThis will be different in the final version");
    }
    
    @Override

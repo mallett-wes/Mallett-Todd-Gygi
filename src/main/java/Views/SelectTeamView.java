@@ -17,13 +17,13 @@ import model.Character;
  *
  * @author wesmallett
  */
-public class SelectTeamView {
-    private Scanner scanner;
+public class SelectTeamView extends View {
 
     public SelectTeamView(){
-        scanner = new Scanner(new InputStreamReader(System.in));
+        super();
     }
 
+    @Override
     public void display(){
         if(Main.getTeam() == null){
             TeamController teamController = new TeamController();
@@ -33,15 +33,17 @@ public class SelectTeamView {
         }
         
         do{
-            doAction(getInputs());
+            doAction(getInput());
         }while(Main.getTeam().getMembers().size() < 4);
         
         GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
+        gameMenuView.display();
     }
 
-    private int[] getInputs(){
-        int[] input = new int[1];
+    @Override
+    public String getInput(){
+        Scanner scanner = new Scanner(new InputStreamReader(System.in));
+        int input = 0;
         
         System.out.println("Select a Character to be on your team");
         if(!Main.getTeam().getMembers().toString().contains("Bill")){
@@ -64,14 +66,15 @@ public class SelectTeamView {
             result = scanner.nextInt();
         }
 
-        input[0] = result;
+        input = result;
 
-        return input;
+        return Integer.toString(result);
     }
 
-    private boolean doAction(int[] inputs){
-        switch(inputs[0]){
-            case 1:
+    @Override
+    public boolean doAction(String inputs){
+        switch(inputs){
+            case "1":
                 Character bill = new Character();
                 bill.setName("Bill");
                 bill.setStamina(3);
@@ -79,7 +82,7 @@ public class SelectTeamView {
                 bill.setSpecialSkill("Hunting");
                 Main.getTeam().addCharacterToTeam(bill);
                 break;
-            case 2:
+            case "2":
                 Character bob = new Character();
                 bob.setName("Bob");
                 bob.setStamina(3);
@@ -87,7 +90,7 @@ public class SelectTeamView {
                 bob.setSpecialSkill("Fishing");
                 Main.getTeam().addCharacterToTeam(bob);
                 break;
-            case 3:
+            case "3":
                 Character sue = new Character();
                 sue.setName("Sue");
                 sue.setStamina(3);
@@ -95,7 +98,7 @@ public class SelectTeamView {
                 sue.setSpecialSkill("Gathering");
                 Main.getTeam().addCharacterToTeam(sue);
                 break;
-            case 4:
+            case "4":
                 Character henry = new Character();
                 henry.setName("Henry");
                 henry.setStamina(3);

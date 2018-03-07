@@ -15,8 +15,8 @@ public class TownSceneView extends View {
     
     
 TownSceneView(){
-    super("Welcome to town!" + "/nTo return to the trail enter 'A'"
-    + "/nTo enter the General Store enter 'G'" + "/nTo enter the Hotel enter 'H'");
+    super("Welcome to town!" + "\nTo return to the trail enter 'A'"
+    + "\nTo enter the General Store enter 'G'" + "\nTo enter the Hotel enter 'H'");
 }   
 
 

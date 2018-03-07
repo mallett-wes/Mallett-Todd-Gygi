@@ -15,44 +15,17 @@ import model.Game;
  *
  * @author hiramtodd
  */
-public class StartExistingGameView {
-   private Scanner scanner;
+public class StartExistingGameView extends View{
     
     public StartExistingGameView(){
-        scanner = new Scanner(new InputStreamReader(System.in));
+       super("Please enter the name of the game you would like to play: ");
     }
     
-    public void display(){
-        boolean valid = false;
-        do{
-            valid = doAction(getInputs());
-        }while(!valid);
-    }
-    
-    private String[] getInputs(){
-        String[] input = new String[1];
-        System.out.println("Please enter the name of the game you would like to play: ");
-        
-        String result = scanner.nextLine().trim().toUpperCase();
-
-        while(result.length() < 1){
-            System.out.println("You must enter a non-blank value or enter Q to quit.");
-            result = scanner.nextLine().trim().toUpperCase();
-
-            if(result.equals("Q")) {
-                System.exit(0);
-            }
-        }
-
-        input[0] = result;
-
-        return input;
-    }
-    
-    private boolean doAction(String[] inputs){
+    @Override
+    public boolean doAction(String input){
         GameController gameController = new GameController();
         
-        Game game = gameController.startExistingGame(inputs[0]);
+        Game game = gameController.startExistingGame(input);
         Main.setGame(game);
         
         return true;

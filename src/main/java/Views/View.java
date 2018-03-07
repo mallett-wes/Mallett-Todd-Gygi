@@ -41,7 +41,7 @@ public abstract class View implements ViewInterface {
             System.out.println("\n" + this.displayMessage);
             
             value = keyboard.nextLine();
-            value = value.trim();
+            value = value.toUpperCase().trim();
 
             if(value.length() <1) {
               System.out.println("\n**** You must enter a value ***");

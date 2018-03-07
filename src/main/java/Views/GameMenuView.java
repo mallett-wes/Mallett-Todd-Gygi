@@ -5,6 +5,9 @@
  */
 package Views;
 
+import Controller.CharacterController;
+import app.Main;
+
 
 /**
  *
@@ -14,8 +17,8 @@ public class GameMenuView extends View{
     
 
     public GameMenuView(){
-      super("What would you like to do?" + "/nM - Move Forward" + "/nR - Rest" 
-      + "/nP - Change Pace" + "/nH - View Your Team's Health" + "/nE - Main Menu"
+      super("What would you like to do?" + "\nM - Move Forward" + "\nR - Rest" 
+      + "\nP - Change Pace" + "\nH - View Your Team's Health" + "\nE - Main Menu"
       );
     }
 
@@ -34,6 +37,28 @@ public class GameMenuView extends View{
     };
     
     private void displayHealth(){
+        CharacterController characterController = new CharacterController();
+        for(model.Character member: Main.getTeam().getMembers()){
+            int currentHealth = 0;
+            try{
+                currentHealth = characterController.calculateHealth(Main.getTeam().getPace(), 2, member.getStamina());
+                
+                if(Main.getCharacter().equals(member)){
+                    System.out.println(member.getName() + "(you) ..... " + currentHealth);
+                }else{
+                    System.out.println(member.getName() + " ..... " + currentHealth);
+                }
+                
+                
+            }catch(Exception e){
+                if(Main.getCharacter().equals(member)){
+                    System.out.println(member.getName() + "(you) ..... Could Not Calculate");
+                }else{
+                    System.out.println(member.getName() + " ..... Could Not Calculate");
+                }
+            }    
+        }
+        
         DisplayTeamHealthView displayTeamHealthView = new DisplayTeamHealthView();
         displayTeamHealthView.display();
     }

@@ -5,54 +5,24 @@
  */
 package Views;
 
-import java.io.InputStreamReader;
-import java.util.Scanner;
-
 /**
  *
  * @author hiramtodd
  */
-public class GettingHelpView {
-    private Scanner scanner;
+public class GettingHelpView extends View{
     
     public GettingHelpView(){
-        scanner = new Scanner(new InputStreamReader(System.in));
+        super("G - What is the goal of the game?" +
+        "\nM - How to move" +
+        "\nE - Estimate the number of resources" +
+        "\nH - Harvest resources" +
+        "\nD - Delivering resources to warehouse" +
+        "\nQ - Exit Help Menu");
     }
     
-    public void display(){
-        boolean valid = false;
-        do{
-            valid = doAction(getInputs());
-        }while(!valid);       
-    }
-    
-    private String[] getInputs(){
-        String[] input = new String[1];
-        System.out.println("G - What is the goal of the game?");
-        System.out.println("M - How to move");
-        System.out.println("E - Estimate the number of resources");
-        System.out.println("H - Harvest resources");
-        System.out.println("D - Delivering resources to warehouse");
-        System.out.println("Q - Exit Help Menu");
-        
-        String result = scanner.nextLine().trim().toUpperCase();
-
-        while(result.length() < 1){
-            System.out.println("You must enter a non-blank value or enter Q to quit the game.");
-            result = scanner.nextLine().trim().toUpperCase();
-
-            if(result.equals("Q")) {
-                System.exit(0);
-            }
-        }
-
-        input[0] = result;
-
-        return input;
-    }
-    
-    private boolean doAction(String[] inputs){
-        String selection = inputs[0];
+    @Override
+    public boolean doAction(String input){
+        String selection = input;
         
         switch(selection){
             case "G":

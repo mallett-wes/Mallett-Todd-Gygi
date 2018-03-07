@@ -13,8 +13,8 @@ package Views;
 public class HotelSceneView extends View {
   public HotelSceneView(){   
    super("Welcome to the hotel!" + "/nTo rest your party enter 'P'" + 
-         "/nTo view new party members enter 'N'" + 
-         "/nTo exit the Hotel enter 'T'");
+         "\nTo view new party members enter 'N'" + 
+         "\nTo exit the Hotel enter 'T'");
   }
     
    

@@ -33,6 +33,7 @@ public class RiverSceneControllerTest {
     public void tearDown() {
     }    
     
+    @Test
     public void testRiverDepth(){
         RiverSceneController controllerInstance = new RiverSceneController();
         String namedSeason = "Winter";
@@ -44,6 +45,7 @@ public class RiverSceneControllerTest {
          assertEquals(expectedResult, result, .0);
     }
     
+    @Test
     public void testRiverDepth_Summer(){
         RiverSceneController controllerInstance = new RiverSceneController();
         String namedSeason = "Summer";
@@ -55,13 +57,14 @@ public class RiverSceneControllerTest {
          assertEquals(expectedResult, result, .0);
     }
     
+    @Test
     public void testRiverDepth_InvalidSeason(){
         RiverSceneController controllerInstance = new RiverSceneController();
         String namedSeason = "1";
         double result = 0;
-        String expectedResult= "That is not an acceptable season";
+        double expectedResult= 0;
         result = controllerInstance.calculateRiverDepth(namedSeason);
         
-         assertEquals(expectedResult, result);
+         assertEquals(expectedResult, result, .0);
     }
 }

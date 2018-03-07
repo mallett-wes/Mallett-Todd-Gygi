@@ -88,7 +88,7 @@ public class DisplayTeamHealthView {
             
         }else if(menuItem.equals("M")){
             MainMenuView mainMenuView = new MainMenuView();
-            mainMenuView.displayMainMenuView();
+            mainMenuView.display();
             
         }else{
             System.out.println("Invalid menu item");

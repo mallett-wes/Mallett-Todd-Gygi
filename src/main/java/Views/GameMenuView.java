@@ -84,7 +84,7 @@ public class GameMenuView {
             
             case "E":
                 MainMenuView mainMenuView = new MainMenuView();
-                mainMenuView.displayMainMenuView();
+                mainMenuView.display();
                 break;
                
             default: System.out.println("Invalid menu item");

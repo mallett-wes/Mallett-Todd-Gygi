@@ -72,7 +72,7 @@ public class GettingHelpView {
                 break;
             case "Q":
                 MainMenuView mainMenuView = new MainMenuView();
-                mainMenuView.displayMainMenuView();
+                mainMenuView.display();
                 break;
             default:
                 System.out.println("Invalid Menu Option.");

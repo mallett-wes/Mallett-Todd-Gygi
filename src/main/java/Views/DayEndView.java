@@ -12,15 +12,7 @@ import java.util.Scanner;
  */
 public class DayEndView extends View {
     public Scanner scanner;
-    
-    @Override
-    public void display(){
-        boolean done = false;
-        do{
-            done = doAction(getInput());
-            
-        }while(done = false);
-}
+
     public DayEndView() { 
             super("To go fishing, enter 'F'" + "\nTo go hunting, enter 'K'"
                     + "\nTo rest, enter 'R'" + "\nGet help, enter 'H'");

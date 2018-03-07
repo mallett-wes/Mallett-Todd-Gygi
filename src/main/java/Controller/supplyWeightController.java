@@ -16,33 +16,16 @@ import model.Team;
  */
 public class supplyWeightController {
 
-    public Supplies supplyWeight(Supplies supply, int quantity, Team team) throws Exception {
-        //Prompt user input for declaring value
-        String input;
-
-        //Prompt user input for declaring value
-        double weight;
-
-        //Prompt user for the objects mass
-        System.out.println("Enter number amount ");
-        Scanner scanner = new Scanner(new InputStreamReader(System.in));
-        input = scanner.nextLine();
-
-        //Convert user input to data-type double because
-        // JOptionPane returns data-type String.
-        double amount = Double.parseDouble(input);
-
+    public boolean supplyWeightTooHeavy(Supplies supply, int quantity){
+        int supplyWeight = supply.getWeight();
         //Calculates weight
-        weight = amount * 10;
+        long weight = quantity * supplyWeight;
 
         //The if cases to display if supply is too heavy, not enough, or just right'.
         if (weight > 500) {
-            throw new Exception("Supply exceeds weight limit!");
-        } else if (weight < 1) {
-            throw new Exception("Supply is depleted.");
+            return true;
         } else {
-            throw new Exception("Supplies do not exceed weight limit!");
+            return false;
         }
     }
-
 }

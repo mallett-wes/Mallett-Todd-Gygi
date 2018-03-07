@@ -10,6 +10,15 @@ public class Supplies implements Serializable {
     private double quantityInStock;
     private double requiredAmount;
     private double price;
+    private int weight;
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
 
     public Supplies(SupplyType supplyType) {
         this.supplyType = supplyType;

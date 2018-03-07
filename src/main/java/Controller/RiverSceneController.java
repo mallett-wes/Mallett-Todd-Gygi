@@ -11,14 +11,10 @@ import model.RiverCrossingScene;
  * @author Kyrie Gygi
  */
 public class RiverSceneController {
-  
- 
-    private double depth;
-    private String namedSeason = Game.getSeason();
-
-   
     
-    public double calculateRiverDepth(double depth, String namedSeason){
+    public double calculateRiverDepth(String namedSeason){
+        double depth = 0;
+        
         if(namedSeason=="Winter"){
             depth = .65 * 5;
         }else if(namedSeason =="Spring"){
@@ -30,8 +26,8 @@ public class RiverSceneController {
         }else {
             System.out.println("That is not an acceptable season");
         }
-        
-        
-    return depth;}
+               
+        return depth;
+    }
     
 }

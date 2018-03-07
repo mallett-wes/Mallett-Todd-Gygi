@@ -5,6 +5,7 @@
  */
 package Views;
 
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
@@ -13,6 +14,8 @@ import java.util.Scanner;
  */
 public class HotelSceneView {
         
+    Scanner scanner = scanner = new Scanner(new InputStreamReader(System.in));
+    
     public void display(){
         boolean test = false;
         do{
@@ -48,9 +51,9 @@ public class HotelSceneView {
                 break;
             default:
             System.out.println("That is an invalid ");
-            break;
-        
+            break;        
         }
+        
+        return true; 
+    }
 }
-GameView gameView = new GameView();
-        gameView.display();

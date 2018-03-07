@@ -24,7 +24,7 @@ public class SelectTeamView {
         scanner = new Scanner(new InputStreamReader(System.in));
     }
 
-    public void displaySelectTeamView(){
+    public void display(){
         if(Main.getTeam() == null){
             TeamController teamController = new TeamController();
             List<Character> teamMembers = new ArrayList<>();

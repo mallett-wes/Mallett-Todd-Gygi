@@ -11,7 +11,6 @@ import java.util.Scanner;
  * @author hiramtodd
  */
 public class DayEndView extends View {
-    public Scanner scanner;
 
     public DayEndView() { 
             super("To go fishing, enter 'F'" + "\nTo go hunting, enter 'K'"

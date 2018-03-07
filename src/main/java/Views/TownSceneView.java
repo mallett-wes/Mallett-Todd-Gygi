@@ -11,27 +11,18 @@ import java.util.Scanner;
  *
  * @author Kyrie Gygi
  */
-public class TownSceneView {
-    private Scanner scanner;
+public class TownSceneView extends View {
     
     
-    public void display(){
-        boolean test = false;
-        do{
-            test = doAction(getInputs());
-            
-        }while(test = false);
-}
-    private String getInputs(){
-        System.out.println("Welcome to town!");
-        System.out.println("To return to the trail enter 'A'");
-        System.out.println("To enter the General Store enter 'G'");
-        System.out.println("To enter the Hotel enter 'H'");
-        String input = scanner.nextLine().trim().toUpperCase();
-        return input;
-    }
-    
-    private boolean doAction(String input){
+TownSceneView(){
+    super("Welcome to town!" + "/nTo return to the trail enter 'A'"
+    + "/nTo enter the General Store enter 'G'" + "/nTo enter the Hotel enter 'H'");
+}   
+
+
+   
+    @Override
+    public boolean doAction(String input){
         String selection;
         selection = input;
         

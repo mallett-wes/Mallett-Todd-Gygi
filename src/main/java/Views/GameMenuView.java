@@ -5,43 +5,21 @@
  */
 package Views;
 
-import java.io.InputStreamReader;
-import java.util.Scanner;
 
 /**
  *
  * @author wesmallett
  */
-public class GameMenuView {
-    private Scanner scanner;
+public class GameMenuView extends View{
+    
 
     public GameMenuView(){
-        scanner = new Scanner(new InputStreamReader(System.in));
+      super("What would you like to do?" + "/nM - Move Forward" + "/nR - Rest" 
+      + "/nP - Change Pace" + "/nH - View Your Team's Health" + "/nE - Main Menu"
+      );
     }
 
-    public void displayGameMenuView(){
-        doAction(getInputs());
-    }
-
-    private String[] getInputs(){
-        String[] input = new String[1];
-        System.out.println("What would you like to do?");
-        System.out.println("M - Move Forward");
-        System.out.println("R - Rest");
-        System.out.println("P - Change Pace");
-        System.out.println("H - View Your Team's Health");
-        System.out.println("E - Main Menu");
-        String result = scanner.nextLine().trim().toUpperCase();
-
-        while(result.length() < 1){
-            System.out.println("You must enter a letter to choose an option.");
-            result = scanner.nextLine().trim().toUpperCase();
-        }
-
-        input[0] = result;
-
-        return input;
-    }
+  
 
     private void changePace(){
         System.out.println("Pace Change");
@@ -59,11 +37,12 @@ public class GameMenuView {
         DisplayTeamHealthView displayTeamHealthView = new DisplayTeamHealthView();
         displayTeamHealthView.display();
     }
-      
-    private boolean doAction(String[] inputs){
+     
+    @Override
+    public boolean doAction(String input){
         String menuItem;
         
-        menuItem =inputs[0];
+        menuItem = input;
 
         switch(menuItem) {
             case "M": 

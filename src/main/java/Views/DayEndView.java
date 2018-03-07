@@ -10,23 +10,20 @@ import java.util.Scanner;
  *
  * @author hiramtodd
  */
-public class DayEndView {
-    private Scanner scanner;
+public class DayEndView extends View {
+    public Scanner scanner;
     
+    @Override
     public void display(){
         boolean done = false;
         do{
-            done = doAction(getInputs());
+            done = doAction(getInput());
             
         }while(done = false);
 }
-    private String getInputs(){
-        System.out.println("To go fishing, enter 'F'");
-        System.out.println("To go hunting, enter 'K'");
-        System.out.println("To rest, enter 'R'");
-        System.out.println("Get help, enter 'H'");
-        String input = scanner.nextLine().trim().toUpperCase();
-        return input;
+    public DayEndView() { 
+            super("To go fishing, enter 'F'" + "\nTo go hunting, enter 'K'"
+                    + "\nTo rest, enter 'R'" + "\nGet help, enter 'H'");
     }
     
     private void getHelp(){
@@ -34,7 +31,8 @@ public class DayEndView {
         helpView.display();
     };
     
-    private boolean doAction(String input){
+    @Override
+    public boolean doAction(String input){
         String selection;
         selection = input;
         
@@ -59,7 +57,7 @@ public class DayEndView {
                 break;
                 
             default:
-            System.out.println("That is an invalid ");
+            System.out.println("That is an invalid selection!");
             break;
         
         }

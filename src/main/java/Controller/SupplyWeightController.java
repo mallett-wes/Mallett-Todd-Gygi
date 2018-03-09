@@ -14,7 +14,7 @@ import model.Team;
  *
  * @author hiramtodd
  */
-public class supplyWeightController {
+public class SupplyWeightController {
 
     public boolean supplyWeightTooHeavy(Supplies supply, int quantity){
         int supplyWeight = supply.getWeight();

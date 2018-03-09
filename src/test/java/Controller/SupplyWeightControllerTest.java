@@ -18,9 +18,9 @@ import static org.junit.Assert.*;
  *
  * @author hiramtodd
  */
-public class supplyWeightControllerTest {
+public class SupplyWeightControllerTest {
     
-    public supplyWeightControllerTest() {
+    public SupplyWeightControllerTest() {
     }
     
     @BeforeClass
@@ -48,7 +48,7 @@ public class supplyWeightControllerTest {
         supply.setWeight(100);
         int quantity = 4;
         
-        supplyWeightController instance = new supplyWeightController();
+        SupplyWeightController instance = new SupplyWeightController();
         Boolean expResult = false;
         
         Boolean result = instance.supplyWeightTooHeavy(supply, quantity);

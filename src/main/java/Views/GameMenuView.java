@@ -7,6 +7,11 @@ package Views;
 
 import Controller.CharacterController;
 import app.Main;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import model.Supplies;
+import model.SupplyType;
 
 
 /**
@@ -17,12 +22,32 @@ public class GameMenuView extends View{
     
 
     public GameMenuView(){
-      super("What would you like to do?" + "\nM - Move Forward" + "\nR - Rest" 
-      + "\nP - Change Pace" + "\nH - View Your Team's Health" + "\nE - Main Menu"
+      super("What would you like to do?" 
+            + "\nM - Move Forward" 
+            + "\nR - Rest" 
+            + "\nS - View Supplies"
+            + "\nP - Change Pace" 
+            + "\nG - Go to General Store"
+            + "\nH - View Your Team's Health"
+            + "\nE - Main Menu"
       );
     }
-
-  
+    
+    private void viewTeamSupplies(){
+        HashMap<SupplyType, Integer> teamSupplies = Main.getTeam().getSupplies();
+        if(teamSupplies.size() < 1){
+            System.out.println("You have no supplies on hand.");
+        }else{
+           System.out.println("Your team's current supplies are: ");
+           
+           for(Map.Entry<SupplyType, Integer> item : teamSupplies.entrySet()){
+            System.out.println(item.getKey().toString() + "...." + item.getValue());
+           }
+        }
+        
+        ReturnMenuView returnToMenuView = new ReturnMenuView();
+        returnToMenuView.display();
+    }
 
     private void changePace(){
         System.out.println("Pace Change");
@@ -59,8 +84,8 @@ public class GameMenuView extends View{
             }    
         }
         
-        DisplayTeamHealthView displayTeamHealthView = new DisplayTeamHealthView();
-        displayTeamHealthView.display();
+        ReturnMenuView returnToMenuView = new ReturnMenuView();
+        returnToMenuView.display();
     }
      
     @Override
@@ -81,11 +106,16 @@ public class GameMenuView extends View{
             case "P": 
                 changePace();
                 break;
-                
+            case "G":
+                GeneralStoreView generalStoreView = new GeneralStoreView();
+                generalStoreView.display();
+                break;
             case "H": 
                 displayHealth();
                 break;
-            
+            case "S":
+                viewTeamSupplies();
+                break;          
             case "E":
                 MainMenuView mainMenuView = new MainMenuView();
                 mainMenuView.display();

@@ -9,10 +9,9 @@ public class Team implements Serializable{
 
     private String teamName;
     private Pace pace;
-    private ArrayList<Character> members = new ArrayList<Character>();
-    private HashMap<SupplyType, Integer> supplies = new HashMap<SupplyType, Integer>();
-    //private Location currentLocation;
-    private double moneyInPocket;
+    private ArrayList<Character> members = new ArrayList<>();
+    private HashMap<SupplyType, Integer> supplies = new HashMap<>();
+    private double moneyInPocket = 1000.00;
     
     public double getMoneyInPocket() {
         return moneyInPocket;
@@ -119,6 +118,9 @@ public class Team implements Serializable{
     }
 
     public void addSuppliesToStock(SupplyType supply, int quantity){
+        if(supplies.isEmpty()){
+            supplies = new HashMap<>();
+        }
         this.supplies.put(supply, quantity);
     }
 

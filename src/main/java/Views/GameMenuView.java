@@ -40,8 +40,9 @@ public class GameMenuView extends View{
         }else{
            System.out.println("Your team's current supplies are: ");
            
-           for(Map.Entry<SupplyType, Integer> item : teamSupplies.entrySet()){
-            System.out.println(item.getKey().toString() + "...." + item.getValue());
+           for(HashMap.Entry<SupplyType, Integer> item : teamSupplies.entrySet()){
+               SupplyType supply = item.getKey();
+            System.out.println(supply.getKey() + "....." + item.getValue());
            }
         }
         

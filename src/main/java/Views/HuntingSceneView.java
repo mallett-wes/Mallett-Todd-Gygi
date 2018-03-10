@@ -14,18 +14,23 @@ import java.util.Random;
 public class HuntingSceneView extends HuntingView {
     
     public HuntingSceneView() {
-        super ("Select 'P' for animal probiblity\n" 
+        super(displayHunt());
+    }
+    private static String displayHunt() {
+        String message = "Select 'P' for animal probiblity\n" 
             + "Select 'R' to hunt Rabbits\n"
             + "'D' to hunt Deer" 
             + "'B' to hunt Bison" 
             + "Select 'Q' to Quit Hunting Menu"
-            + "Please make a selection");
+            + "Please make a selection";
+        
+        return message;
     }
     
     @Override
-    public boolean doAction(String value) {
+    public boolean doAction(String input) {
         
-        switch(value.toUpperCase()) {
+        switch(input) {
             case "P": //to see probability of catching animal
                 this.huntProbability();
                 break;

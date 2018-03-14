@@ -39,7 +39,7 @@ CharacterController controller;
         int result = 0;
 
         try{
-            result = controller.calculateHealth(pace, lastNourishment, characterStamina);
+            result = controller.calculateIndividualCharacterHealth(pace, lastNourishment, characterStamina);
         }catch(Exception e){
             assertFalse(e.getMessage().toString(), true);
         }
@@ -57,7 +57,7 @@ CharacterController controller;
         double result = 0;
 
         try{
-            result = controller.calculateHealth(pace, lastNourishment, characterStamina);
+            result = controller.calculateIndividualCharacterHealth(pace, lastNourishment, characterStamina);
         }catch(Exception e){
             assertEquals(expectedResult, e.getMessage());
         }
@@ -75,7 +75,7 @@ CharacterController controller;
         int result = 0;
 
         try{
-            result = controller.calculateHealth(pace, lastNourishment, characterStamina);
+            result = controller.calculateIndividualCharacterHealth(pace, lastNourishment, characterStamina);
         }catch(Exception e){
             assertEquals(expectedResult, e.getMessage());
         }
@@ -91,7 +91,7 @@ CharacterController controller;
         int result = 0;
 
         try{
-            result = controller.calculateHealth(pace, lastNourishment, characterStamina);
+            result = controller.calculateIndividualCharacterHealth(pace, lastNourishment, characterStamina);
         }catch(Exception e){
             assertFalse(e.getMessage().toString(), true);
         }
@@ -109,7 +109,7 @@ CharacterController controller;
         int result = 0;
 
         try{
-            result = controller.calculateHealth(pace, lastNourishment, characterStamina);
+            result = controller.calculateIndividualCharacterHealth(pace, lastNourishment, characterStamina);
         }catch(Exception e){
             assertFalse(e.getMessage().toString(), true);
         }
@@ -127,7 +127,7 @@ CharacterController controller;
         int result = 0;
 
         try{
-            result = controller.calculateHealth(pace, lastNourishment, characterStamina);
+            result = controller.calculateIndividualCharacterHealth(pace, lastNourishment, characterStamina);
         }catch(Exception e){
             assertFalse(e.getMessage().toString(), true);
         }

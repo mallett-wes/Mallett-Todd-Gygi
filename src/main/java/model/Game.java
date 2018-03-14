@@ -19,6 +19,15 @@ public class Game implements Serializable{
     private String season;
     private Date date;
     private Character mainPlayer;
+    private Team team;
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 
     public Character getMainPlayer() {
         return mainPlayer;

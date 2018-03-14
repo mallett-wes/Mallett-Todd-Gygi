@@ -5,8 +5,10 @@
  */
 package Controller;
 
+import java.util.ArrayList;
 import model.Pace;
 import model.Character;
+import model.Team;
 
 /**
  *
@@ -30,7 +32,7 @@ public class CharacterController {
         return character;
     }
 
-    public int calculateHealth(Pace pace, int lastNourishment, int characterStamina) throws Exception {
+    public int calculateIndividualCharacterHealth(Pace pace, int lastNourishment, int characterStamina) throws Exception {
         int paceFactor = 1;
 
         if(pace == null){
@@ -64,6 +66,26 @@ public class CharacterController {
         }
 
         return Math.round(nourishmentFactor * characterStamina / paceFactor);
+    }
+    
+    public double calculateTeamAverageHealth(Team team, int lastNourishment){
+        ArrayList<Integer> health = new ArrayList<>();
+        int memberHealth = 0;
+        for(Character teamMember : team.getMembers()){
+            try{
+                memberHealth = calculateIndividualCharacterHealth(team.getPace(), lastNourishment, teamMember.getStamina());
+            }catch(Exception e){
+                return -1;
+            }
+            health.add(memberHealth);
+        }
+        
+        int sum = 0;
+        for(int i=0; i < health.size() ; i++){
+            sum += health.get(i);
+        }
+       
+        return sum / health.size();
     }
     
 }

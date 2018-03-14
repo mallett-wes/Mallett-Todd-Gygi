@@ -25,16 +25,16 @@ public class SelectTeamView extends View {
 
     @Override
     public void display(){
-        if(Main.getTeam() == null){
+        if(Main.getGame().getTeam() == null){
             TeamController teamController = new TeamController();
             List<Character> teamMembers = new ArrayList<>();
             
-            Main.setTeam(teamController.createTeam(teamMembers));
+            Main.getGame().setTeam(teamController.createTeam(teamMembers));
         }
         
         do{
             doAction(getInput());
-        }while(Main.getTeam().getMembers().size() < 4);
+        }while(Main.getGame().getTeam().getMembers().size() < 4);
         
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
@@ -46,16 +46,16 @@ public class SelectTeamView extends View {
         int input = 0;
         
         System.out.println("Select a Character to be on your team");
-        if(!Main.getTeam().getMembers().toString().contains("Bill")){
+        if(!Main.getGame().getTeam().getMembers().toString().contains("Bill")){
             System.out.println("1 - Bill");
         }
-        if(!Main.getTeam().getMembers().toString().contains("Bob")){
+        if(!Main.getGame().getTeam().getMembers().toString().contains("Bob")){
             System.out.println("2 - Bob");
         }
-        if(!Main.getTeam().getMembers().toString().contains("Sue")){
+        if(!Main.getGame().getTeam().getMembers().toString().contains("Sue")){
             System.out.println("3 - Sue");
         }
-        if(!Main.getTeam().getMembers().toString().contains("Henry")){
+        if(!Main.getGame().getTeam().getMembers().toString().contains("Henry")){
             System.out.println("4 - Henry");
         }
 
@@ -80,7 +80,7 @@ public class SelectTeamView extends View {
                 bill.setStamina(3);
                 bill.setHealthRating(8);
                 bill.setSpecialSkill("Hunting");
-                Main.getTeam().addCharacterToTeam(bill);
+                Main.getGame().getTeam().addCharacterToTeam(bill);
                 break;
             case "2":
                 Character bob = new Character();
@@ -88,7 +88,7 @@ public class SelectTeamView extends View {
                 bob.setStamina(3);
                 bob.setHealthRating(8);
                 bob.setSpecialSkill("Fishing");
-                Main.getTeam().addCharacterToTeam(bob);
+                Main.getGame().getTeam().addCharacterToTeam(bob);
                 break;
             case "3":
                 Character sue = new Character();
@@ -96,7 +96,7 @@ public class SelectTeamView extends View {
                 sue.setStamina(3);
                 sue.setHealthRating(8);
                 sue.setSpecialSkill("Gathering");
-                Main.getTeam().addCharacterToTeam(sue);
+                Main.getGame().getTeam().addCharacterToTeam(sue);
                 break;
             case "4":
                 Character henry = new Character();
@@ -104,7 +104,7 @@ public class SelectTeamView extends View {
                 henry.setStamina(3);
                 henry.setHealthRating(8);
                 henry.setSpecialSkill("Building");
-                Main.getTeam().addCharacterToTeam(henry);
+                Main.getGame().getTeam().addCharacterToTeam(henry);
                 break;
             default:
                 System.out.println("Sorry, you did not enter a valid selection.");

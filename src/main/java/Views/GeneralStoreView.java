@@ -21,7 +21,7 @@ public class GeneralStoreView extends View {
    
    private static String displaySupplies(){
         String message = "Welcome to the General Store! What would you like to purchase?\n"
-                         + "You have $" + Main.getTeam().getMoneyInPocket() + "\n";
+                         + "You have $" + Main.getGame().getTeam().getMoneyInPocket() + "\n";
         int selector = 1;
         for(SupplyType type: SupplyType.values()){
             String supplyName = type.getKey();

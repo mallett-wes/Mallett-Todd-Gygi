@@ -34,7 +34,7 @@ public class GameMenuView extends View{
     }
     
     private void viewTeamSupplies(){
-        HashMap<SupplyType, Integer> teamSupplies = Main.getTeam().getSupplies();
+        HashMap<SupplyType, Integer> teamSupplies = Main.getGame().getTeam().getSupplies();
         if(teamSupplies.size() < 1){
             System.out.println("You have no supplies on hand.");
         }else{
@@ -64,10 +64,10 @@ public class GameMenuView extends View{
     
     private void displayHealth(){
         CharacterController characterController = new CharacterController();
-        for(model.Character member: Main.getTeam().getMembers()){
+        for(model.Character member: Main.getGame().getTeam().getMembers()){
             int currentHealth = 0;
             try{
-                currentHealth = characterController.calculateHealth(Main.getTeam().getPace(), 2, member.getStamina());
+                currentHealth = characterController.calculateIndividualCharacterHealth(Main.getGame().getTeam().getPace(), 2, member.getStamina());
                 
                 if(Main.getCharacter().equals(member)){
                     System.out.println(member.getName() + "(you) ..... " + currentHealth);
@@ -84,6 +84,8 @@ public class GameMenuView extends View{
                 }
             }    
         }
+        
+        System.out.println("Your team's total average health is " + characterController.calculateTeamAverageHealth(Main.getGame().getTeam(), 2));
         
         ReturnMenuView returnToMenuView = new ReturnMenuView();
         returnToMenuView.display();

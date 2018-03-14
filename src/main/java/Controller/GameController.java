@@ -96,7 +96,8 @@ public class GameController {
     
     public static Map createMap(int rowCount, int columnCount, Supplies[] supplies){
         int l;
-        l = supplies.length();
+        //l = supplies.length();
+        l = supplies.length;
         if(rowCount < 0 || columnCount < 0){
             return null;
         }

@@ -5,11 +5,11 @@
  */
 package Controller;
 
+import java.util.Random;
 import model.Pace;
-import org.junit.After;
-import org.junit.AfterClass;
+import model.Character;
+import model.Team;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -28,6 +28,67 @@ CharacterController controller;
     public void setup(){
         controller = new CharacterController();
     }
+    
+    @Test
+    public void testCalculateTeamHealthAverage_ValidValues(){
+        Team team = new Team();
+        team.setPace(Pace.AVERAGE);
+        team.addCharacterToTeam(createCharacter(3));
+        team.addCharacterToTeam(createCharacter(8));
+        team.addCharacterToTeam(createCharacter(8));
+        team.addCharacterToTeam(createCharacter(8));
+        
+        int lastNourishment = 2;
+        double expectedResult = 6.0;
+        
+        double result = controller.calculateTeamAverageHealth(team, lastNourishment);
+        
+        assertEquals(expectedResult, result, .0);
+    }
+    
+    @Test
+    public void testCalculateTeamHealthAverage_ZeroStamina(){
+        Team team = new Team();
+        team.setPace(Pace.AVERAGE);
+        team.addCharacterToTeam(createCharacter(3));
+        team.addCharacterToTeam(createCharacter(0));
+        team.addCharacterToTeam(createCharacter(0));
+        team.addCharacterToTeam(createCharacter(0));
+        
+        int lastNourishment = 2;
+        double expectedResult = -1;
+        
+        double result = controller.calculateTeamAverageHealth(team, lastNourishment);
+        
+        assertEquals(expectedResult, result, .0);
+    }
+    
+     @Test
+    public void testCalculateTeamHealthAverage_OneCharacterTeam(){
+        Team team = new Team();
+        team.setPace(Pace.AVERAGE);
+        team.addCharacterToTeam(createCharacter(3));
+        
+        int lastNourishment = 2;
+        double expectedResult = 3;
+        
+        double result = controller.calculateTeamAverageHealth(team, lastNourishment);
+        
+        assertEquals(expectedResult, result, .0);
+    }
+    
+    @Test
+    public void testCalculateTeamHealthAverage_TeamNoMembers(){
+        Team team = new Team();
+        
+        int lastNourishment = 2;
+        double expectedResult = -1;
+        
+        double result = controller.calculateTeamAverageHealth(team, lastNourishment);
+        
+        assertEquals(expectedResult, result, .0);
+    }
+
 
     @Test
     public void testCalculateHealth_AllGoodValues() {
@@ -133,6 +194,14 @@ CharacterController controller;
         }
 
         assertEquals(expectedResult, result);
+    }
+    
+    private Character createCharacter(int stamina){
+        Character character = new Character();
+        Random random = new Random();
+        character.setName("TEST" + random.nextInt(10));
+        character.setStamina(stamina);
+        return character;
     }
     
 }

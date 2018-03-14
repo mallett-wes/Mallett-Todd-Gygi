@@ -21,7 +21,7 @@ public class CharacterController {
         character.setMainPlayer(true);
         character.setDescription("This is the main player of the gameModel.");
 
-        if(name.equals(null) || name.equals("")){
+        if(name == null || name.equals("")){
             return null;
         }
         character.setName(name);
@@ -69,6 +69,14 @@ public class CharacterController {
     }
     
     public double calculateTeamAverageHealth(Team team, int lastNourishment){
+        if(team == null){
+            return -1;
+        }
+        
+        if(team.getMembers().size() < 1){
+            return -1;
+        }
+        
         ArrayList<Integer> health = new ArrayList<>();
         int memberHealth = 0;
         for(Character teamMember : team.getMembers()){

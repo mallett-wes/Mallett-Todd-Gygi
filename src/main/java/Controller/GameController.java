@@ -9,6 +9,7 @@ import model.Game;
 import model.Character;
 import model.Supplies;
 import model.Map;
+import model.Location;
 
 /**
  *
@@ -102,9 +103,14 @@ public class GameController {
         
       //  if(supplies == 'null' || supplies.length() < 1){
        // return null;
-    }
+       
+    
+    //}
         Map map = new Map();
-        
+        rowCount = map.getRowCount();
+        columnCount = map.getColumnCount();
+        Location location = new Location();
+        location.createLocations(rowCount, columnCount);
         
     }
     public Game startExistingGame(String gameName){

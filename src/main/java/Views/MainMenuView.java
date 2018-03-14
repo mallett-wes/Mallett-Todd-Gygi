@@ -5,6 +5,8 @@
  */
 package Views;
 
+import Controller.GameController;
+import Controller.CharacterController;
 import java.io.InputStreamReader;
 
 /**
@@ -23,9 +25,11 @@ public class MainMenuView extends View{
       
 
     private void startNewGame(){
-        GameView gameView = new GameView();
-        gameView.display();
-    };
+       int returnValue = GameController.createNewGame(CharacterController.selectMainCharacter());
+               if (returnValue < 0){
+                   System.out.println("ERROR - Failed to create new game");
+               }
+     };
     
     private void restartGame(){
         StartExistingGameView startExistingGameView = new StartExistingGameView();
@@ -45,7 +49,7 @@ public class MainMenuView extends View{
 
         switch(menuItem) {
             case "N": 
-                startNewGame();
+                this.startNewGame();
                 break;
                 
             case "R": 

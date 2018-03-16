@@ -80,7 +80,7 @@ public class GameMenuView extends View{
                 row += " | " ;
                 Location location = locations[i][x];
                 if(location.isVisited()){
-                    row += "****";
+                    row += "**";
                 }else{
                     row += "??";
                 }
@@ -127,7 +127,7 @@ public class GameMenuView extends View{
     public boolean doAction(String input){
         String menuItem;
         
-        menuItem = input;
+        menuItem = input.toUpperCase();
 
         switch(menuItem) {
             case "M": 

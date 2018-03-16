@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Kyrie Gygi
  */
-public class FortScene implements Serializable{
+public class FortScene extends Scenes implements Serializable{
     private String selection;
 
     public String getSelection() {

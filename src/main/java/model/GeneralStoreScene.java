@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Kyrie Gygi
  */
-public class GeneralStoreScene implements Serializable{
+public class GeneralStoreScene extends Scenes implements Serializable{
     private int quantity;
 
     public int getQuantity() {

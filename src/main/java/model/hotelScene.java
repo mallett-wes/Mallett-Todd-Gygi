@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Kyrie Gygi
  */
-public class hotelScene implements Serializable{
+public class hotelScene extends Scenes implements Serializable{
     private String deadCharacters;
     private String teamMembers;
     

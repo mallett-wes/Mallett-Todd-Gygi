@@ -79,11 +79,18 @@ private static Scene[][] createScenes(int rowCount, int columnCount){
             return null;
         }
     
-    Scenes scene = new Scenes();
+   Scenes scene = new Scenes();
    ArrayList <Scenes> scenes = new ArrayList<>();
    RiverCrossingScene riverCrossingScene = new RiverCrossingScene();
    scenes.add(riverCrossingScene);
-            
+   TownScene townScene = new TownScene();
+   scenes.add(townScene);
+   GeneralStoreScene generalStoreScene = new GeneralStoreScene();
+   FortScene fortScene = new FortScene();
+   scenes.add(fortScene);
+   hotelScene hotelScene = new hotelScene();
+   scenes.add(hotelScene);
+   
            
             
 

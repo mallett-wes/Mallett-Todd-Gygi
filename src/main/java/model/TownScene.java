@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Kyrie Gygi
  */
-public class TownScene implements Serializable{
+public class TownScene extends Scenes implements Serializable{
     
     private String selection;
 

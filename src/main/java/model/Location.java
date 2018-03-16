@@ -30,11 +30,14 @@ public class Location implements Serializable {
     public void setScene(Scenes scene) {
         this.scene = scene;
     }
+<<<<<<< Updated upstream
 
    
    
 
     
+=======
+>>>>>>> Stashed changes
     
     public int getRow() {
         return this.row;

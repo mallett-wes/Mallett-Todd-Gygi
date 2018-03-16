@@ -21,16 +21,17 @@ public class Location implements Serializable {
     private int amountTraveledFromNauvoo;
     private String weatherCondition;
     private String locationType;
-    private int[] scene;
+    private Scenes scene;
 
-    public int[] getScene() {
+    public Scenes getScene() {
         return scene;
     }
 
-    public void setScene(int[] scene) {
+    public void setScene(Scenes scene) {
         this.scene = scene;
     }
 
+   
    
 
     

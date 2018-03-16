@@ -5,6 +5,7 @@
  */
 package Controller;
 import java.util.ArrayList;
+import java.util.List;
 import model.Location;
 import model.Map;
 import model.Supplies;
@@ -31,7 +32,7 @@ public class MapController {
     private static Scenes[] river;
     
     
-     public static Map createMap(int rowCount, int columnCount){
+    public static Map createMap(int rowCount, int columnCount){
          
         if(rowCount < 1 || columnCount < 1){
             return null;
@@ -42,9 +43,14 @@ public class MapController {
         map.setColumnCount(columnCount);
         
         Location[][] locations = createLocations(rowCount, columnCount);
+        map.setLocations(locations);
         
-        Scene[] scenes = createScenes();
-     return void;
+        List<Scenes> scenes = createScenes();
+        Scenes[] sceneArray = new Scenes[scenes.size()];
+        sceneArray = scenes.toArray(sceneArray);
+        assignScenesToLocations(map, sceneArray);
+        
+        return map;
     }
     
 private static Location[][] createLocations(int rowCount, int columnCount){
@@ -56,47 +62,46 @@ private static Location[][] createLocations(int rowCount, int columnCount){
     for(int i = 0;i<10;i++){
         for(int x = 0; x<10; x++){
             Location location = new Location();
-            location.setRow(rowCount);
-            location.setColumn(columnCount);
+            location.setRow(i);
+            location.setColumn(x);
             location.setVisited(false);
             locations[i][x] = location;
         }
         
     }
+    
+    return locations;
 }
 
 
 
-private static Scene[][] createScenes(int rowCount, int columnCount){
-    if(rowCount < 1 || columnCount < 1){
-            return null;
-        }
-    
-   Scenes scene = new Scenes();
-   ArrayList <Scenes> scenes = new ArrayList<>();
+private static List<Scenes> createScenes(){
+   ArrayList<Scenes> scenes = new ArrayList<>();
+   
    RiverCrossingScene riverCrossingScene = new RiverCrossingScene();
    scenes.add(riverCrossingScene);
+   
    TownScene townScene = new TownScene();
    scenes.add(townScene);
+   
    GeneralStoreScene generalStoreScene = new GeneralStoreScene();
+   scenes.add(generalStoreScene);
+   
    FortScene fortScene = new FortScene();
    scenes.add(fortScene);
+   
    hotelScene hotelScene = new hotelScene();
    scenes.add(hotelScene);
    
-           
-            
-
-            
-        
-                
-    }
+   return scenes;
+}
     
 private static void assignScenesToLocations(Map map, Scenes[] scenes){
     
     Location[][] locations = map.getLocations();
     locations[0][0].setScene(scenes[SceneType.plains.ordinal()]);
-    locations[0][1].setScene(scenes[SceneType.start.ordinal()]);
+    locations[0][0].setVisited(true);
+    locations[0][1].setScene(scenes[SceneType.plains.ordinal()]);
     locations[0][2].setScene(scenes[SceneType.plains.ordinal()]);
     locations[0][3].setScene(scenes[SceneType.plains.ordinal()]);
     locations[0][4].setScene(scenes[SceneType.plains.ordinal()]);
@@ -184,7 +189,7 @@ private static void assignScenesToLocations(Map map, Scenes[] scenes){
     locations[8][6].setScene(scenes[SceneType.plains.ordinal()]);
     locations[8][7].setScene(scenes[SceneType.plains.ordinal()]);
     locations[8][8].setScene(scenes[SceneType.plains.ordinal()]);
-    locations[8][9].setScene(scenes[SceneType.end.ordinal()]);
+    locations[8][9].setScene(scenes[SceneType.mountain.ordinal()]);
     locations[9][0].setScene(scenes[SceneType.plains.ordinal()]);
     locations[9][1].setScene(scenes[SceneType.plains.ordinal()]);
     locations[9][2].setScene(scenes[SceneType.plains.ordinal()]);
@@ -194,10 +199,7 @@ private static void assignScenesToLocations(Map map, Scenes[] scenes){
     locations[9][6].setScene(scenes[SceneType.plains.ordinal()]);
     locations[9][7].setScene(scenes[SceneType.plains.ordinal()]);
     locations[9][8].setScene(scenes[SceneType.plains.ordinal()]);
-    locations[9][9].setScene(scenes[SceneType.plains.ordinal()]);
-    
-    
-    
+    locations[9][9].setScene(scenes[SceneType.plains.ordinal()]);   
 }
 
 

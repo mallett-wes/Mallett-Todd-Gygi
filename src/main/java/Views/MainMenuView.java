@@ -7,7 +7,9 @@ package Views;
 
 import Controller.GameController;
 import Controller.CharacterController;
+import app.Main;
 import java.io.InputStreamReader;
+import model.Game;
 
 /**
  *
@@ -25,10 +27,15 @@ public class MainMenuView extends View{
       
 
     private void startNewGame(){
-       int returnValue = GameController.createNewGame(CharacterController.selectMainCharacter());
-               if (returnValue < 0){
+       GameController gameController = new GameController();
+       Game newGame = gameController.createNewGame(Main.getCharacter());
+               if (newGame == null){
                    System.out.println("ERROR - Failed to create new game");
+               }else{
+                   Main.setGame(newGame);
                }
+        GameView gameView = new GameView();
+        gameView.display();
      };
     
     private void restartGame(){

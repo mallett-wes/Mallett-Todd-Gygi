@@ -20,10 +20,7 @@ public class GameView extends View{
     
     @Override
     public boolean doAction(String input){
-        GameController gameController = new GameController();
-        
-        Game newGame = gameController.createNewGame(input, Main.getCharacter());
-        Main.setGame(newGame);
+        Main.getGame().setName(input);
         
         SelectTeamView selectTeamView = new SelectTeamView();
         selectTeamView.display();

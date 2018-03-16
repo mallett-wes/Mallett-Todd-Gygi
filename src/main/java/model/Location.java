@@ -22,6 +22,15 @@ public class Location implements Serializable {
     private String weatherCondition;
     private String locationType;
     private Scenes scene;
+    private boolean visited;
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
 
     public Scenes getScene() {
         return scene;
@@ -30,17 +39,6 @@ public class Location implements Serializable {
     public void setScene(Scenes scene) {
         this.scene = scene;
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-   
-   
-
-    
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     
     public int getRow() {
         return this.row;

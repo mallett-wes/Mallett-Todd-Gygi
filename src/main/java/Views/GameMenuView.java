@@ -10,6 +10,8 @@ import app.Main;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import model.Game;
+import model.Location;
 import model.Supplies;
 import model.SupplyType;
 
@@ -27,6 +29,7 @@ public class GameMenuView extends View{
             + "\nR - Rest" 
             + "\nS - View Supplies"
             + "\nP - Change Pace" 
+            + "\nV - View Map"
             + "\nG - Go to General Store"
             + "\nH - View Your Team's Health"
             + "\nE - Main Menu"
@@ -61,6 +64,35 @@ public class GameMenuView extends View{
     private void rest(){
         System.out.println("RESTING.....STUB");
     };
+    
+    private void displayMap(){
+        Game game = Main.getGame();
+        Location[][] locations = game.getMap().getLocations();
+        String row = "";
+        System.out.println("This is the map of the game!");
+        System.out.println("     1    2    3    4    5    6   7    8    9   10 ");
+        
+        for(int i = 0; i<10; i++){
+            row = "";
+            row += "-----------------------------------------------------\n" + (i + 1);
+            //System.out.println("----------------\n" + i + 1);
+            for(int x = 0; x<10; x++){
+                row += " | " ;
+                Location location = locations[i][x];
+                if(location.isVisited()){
+                    row += "****";
+                }else{
+                    row += "??";
+                }
+                //row += "    |";
+            }
+            row += "|\n";
+            System.out.println(row);
+        }
+        
+        ReturnMenuView returnToMenuView = new ReturnMenuView();
+        returnToMenuView.display();
+    }
     
     private void displayHealth(){
         CharacterController characterController = new CharacterController();
@@ -105,7 +137,9 @@ public class GameMenuView extends View{
             case "R": 
                 rest();
                 break;
-                
+            case "V":
+                displayMap();
+                break;
             case "P": 
                 changePace();
                 break;

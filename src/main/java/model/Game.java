@@ -20,6 +20,15 @@ public class Game implements Serializable{
     private Date date;
     private Character mainPlayer;
     private Team team;
+    private Map map;
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
 
     public Team getTeam() {
         return team;

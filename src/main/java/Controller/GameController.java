@@ -17,10 +17,12 @@ import model.Location;
  */
 public class GameController {
     
-    public Game createNewGame(String gameName, Character player){
+    public Game createNewGame(Character player){
         Game game = new Game();
+        MapController mapController = new MapController();
         game.setMainPlayer(player);
-        game.setName(gameName);
+        Map map = mapController.createMap(10, 10);
+        game.setMap(map);
         
         return game;
     }
@@ -94,26 +96,6 @@ public class GameController {
         return Supplies;
     }
     
-    public static Map createMap(int rowCount, int columnCount, Supplies[] supplies){
-        int l;
-        //l = supplies.length();
-        l = supplies.length;
-        if(rowCount < 0 || columnCount < 0){
-            return null;
-        }
-        
-      //  if(supplies == 'null' || supplies.length() < 1){
-       // return null;
-       
-    
-    //}
-        Map map = new Map();
-        rowCount = map.getRowCount();
-        columnCount = map.getColumnCount();
-        Location location = new Location();
-        location.createLocations(rowCount, columnCount);
-        
-    }
     public Game startExistingGame(String gameName){
         return new Game();
     }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
+import java.util.ArrayList;
 import model.Location;
 import model.Map;
 import model.Supplies;
@@ -15,36 +16,38 @@ import model.Supplies;
 public class MapController {
     
     
-     public static Map createMap(){
-        int l;
-        l = supplies.length();
-        if(rowCount < 0 || columnCount < 0){
+     public static Map createMap(int rowCount, int columnCount){
+         
+        if(rowCount < 1 || columnCount < 1){
             return null;
         }
         
-        if(supplies == 'null' || supplies.length() < 1){
-        return null;
-       
-    
-    }
         Map map = new Map();
-        rowCount = map.getRowCount();
-        columnCount = map.getColumnCount();
-        Location location = new Location();
-        location.createLocations(rowCount, columnCount);
+        map.setRowCount(rowCount);
+        map.setColumnCount(columnCount);
         
+        Location[][] locations = createLocations(rowCount, columnCount);
         
-     
-     
-     
-     
+        Scene[] scenes = createScenes();
      return void;
     }
     
 private static Location[][] createLocations(int rowCount, int columnCount){
-         
-     return void;
-     }
+    if(rowCount < 1 || columnCount < 1){
+            return null;
+        }
+    
+    Location[][] locations = new Location[10][10];
+    for(int i = 0;i<10;i++){
+        for(int x = 0; x<10; x++){
+            Location location = new Location();
+            location.setRow(rowCount);
+            location.setColumn(columnCount);
+            locations[i][x] = location;
+        }
+        
+    }
+}
 
 
 private static Question[] createQuestions(){

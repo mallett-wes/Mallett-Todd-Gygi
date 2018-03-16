@@ -143,8 +143,10 @@ public class Location implements Serializable {
         }
         return true;
     }
-    
-    public Location() {
+    public void createLocations(int row, int column){
         
-    } 
+    }
+  //  public Location() {
+        
+  //  } 
 }

@@ -10,5 +10,12 @@ package Controller;
  * @author Kyrie Gygi
  */
 public class GameControl {
+    public String name = "null";
+    public static int createNewGame(String name){
+       if (name == null){
+           return -1;
+       }
+       
+    }
     
 }

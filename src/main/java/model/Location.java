@@ -21,6 +21,19 @@ public class Location implements Serializable {
     private int amountTraveledFromNauvoo;
     private String weatherCondition;
     private String locationType;
+    private int[] scene;
+
+    public int[] getScene() {
+        return scene;
+    }
+
+    public void setScene(int[] scene) {
+        this.scene = scene;
+    }
+
+   
+
+    
     
     public int getRow() {
         return this.row;

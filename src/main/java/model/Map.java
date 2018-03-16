@@ -14,6 +14,15 @@ import java.io.Serializable;
 public class Map implements Serializable {
     private int rowCount;
     private int columnCount;
+    private Location[][] locations;
+
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }
     
     public int getRowCount() {
         return this.rowCount;

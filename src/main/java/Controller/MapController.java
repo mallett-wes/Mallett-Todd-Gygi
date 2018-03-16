@@ -14,6 +14,7 @@ import model.hotelScene;
 import model.TownScene;
 import model.FortScene;
 import model.GeneralStoreScene;
+import model.SceneType;
 
 /**
  *
@@ -64,15 +65,7 @@ private static Location[][] createLocations(int rowCount, int columnCount){
     }
 }
 
-public enum SceneType{
-    mountain,
-    river,
-    plains,
-    desert,
-    city,
-    start,
-    end
-    }
+
 
 private static Scene[][] createScenes(int rowCount, int columnCount){
     if(rowCount < 1 || columnCount < 1){
@@ -99,7 +92,10 @@ private static Scene[][] createScenes(int rowCount, int columnCount){
                 
     }
     
-  
+private static void assignScenesToLocations(Map map, Scenes[] scenes){
+    
+    Location[][] locations = map.getLocations();
+    locations[0][0].setScene(scenes[SceneType.plains.ordinal()]);
     
 
     
@@ -110,9 +106,7 @@ private static Scene[][] createScenes(int rowCount, int columnCount){
 
 
 
-private static void assignScenesToLocations(Scene[] scenes, Location[][] locations){
-    
-}
+
 }
 
 

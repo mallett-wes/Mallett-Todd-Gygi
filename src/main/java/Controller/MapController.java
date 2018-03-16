@@ -8,12 +8,26 @@ import java.util.ArrayList;
 import model.Location;
 import model.Map;
 import model.Supplies;
+import model.Scenes;
+import model.RiverCrossingScene;
+import model.hotelScene;
+import model.TownScene;
+import model.FortScene;
+import model.GeneralStoreScene;
 
 /**
  *
  * @author Kyrie Gygi
  */
 public class MapController {
+
+    private static Scenes[] start;
+    private static Scenes[] mountain;
+    private static Scenes[] desert;
+    private static Scenes[] city;
+    private static Scenes[] end;
+    private static Scenes[] plains;
+    private static Scenes[] river;
     
     
      public static Map createMap(int rowCount, int columnCount){
@@ -50,22 +64,44 @@ private static Location[][] createLocations(int rowCount, int columnCount){
     }
 }
 
+public enum SceneType{
+    mountain,
+    river,
+    plains,
+    desert,
+    city,
+    start,
+    end
+    }
 
-private static Question[] createQuestions(){
+private static Scene[][] createScenes(int rowCount, int columnCount){
+    if(rowCount < 1 || columnCount < 1){
+            return null;
+        }
+    
+    Scenes scene = new Scenes();
+   ArrayList <Scenes> scenes = new ArrayList<>();
+   RiverCrossingScene riverCrossingScene = new RiverCrossingScene();
+   scenes.add(riverCrossingScene);
+            
+           
+            
+
+            
+        
+                
+    }
+    
+  
+    
+
+    
+    
     
 }
 
-private static Scene[] createScenes(){
-    
-}
 
-private static void assignQuestionsToScenes(Question[] questions, Scene[] scenes){
-    
-}
 
-private static void assignItemsToScenes(Supplies[] supply, Scene[] scenes){
-    
-}
 
 private static void assignScenesToLocations(Scene[] scenes, Location[][] locations){
     

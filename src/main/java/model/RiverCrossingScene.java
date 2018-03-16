@@ -7,11 +7,12 @@ package model;
 
 import java.io.Serializable;
 
+
 /**
  *
  * @author Kyrie Gygi
  */
-public class RiverCrossingScene implements Serializable{
+public class RiverCrossingScene extends Scenes implements Serializable {
 private double probabilityOfSuccess;
 private int riverDepth;
 private double successfulCrossing;

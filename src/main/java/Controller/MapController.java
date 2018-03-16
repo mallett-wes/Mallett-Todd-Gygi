@@ -43,6 +43,7 @@ private static Location[][] createLocations(int rowCount, int columnCount){
             Location location = new Location();
             location.setRow(rowCount);
             location.setColumn(columnCount);
+            location.setVisited(false);
             locations[i][x] = location;
         }
         

@@ -96,4 +96,58 @@ public class CharacterController {
         return sum / health.size();
     }
     
+public int findMaxAttackStrength(Team team, int lastNourishment, int characterStamina) {
+        int maxAttackStrength = 1;
+
+        if(pace == null){
+            throw new Exception("You must select a valid name.");
+        }
+
+        switch(pace){
+            case BILL:
+                strengthFactor = 90;
+                break;
+            case SUE:
+                strengthFactor = 95;
+                break;
+            case BOB:
+                strengthFactor = 50;
+                break;
+            case HENRY:
+                strengthFactor = 40;
+                break;
+        }
+
+    return strengthFactor;
+}
+    
+//function that finds the character’s maximum attack strength
+    public double charMaxAttackStrength(Team team, int lastNourishment){
+        if(team == null){
+            return -1;
+        }
+        
+        if(team.getMembers().size() < 1){
+            return -1;
+        }
+        
+        ArrayList<Integer> health = new ArrayList<>();
+        int memberMaxAttackStrength = 0;
+        for(Character teamMember : team.getMembers()){
+            try{
+                memberMaxAttackStrength = findMaxAttackStrength(Team team, lastNourishment, teamMember.getStamina());
+            }catch(Exception e){
+                return -1;
+            }
+            health.add(memberMaxAttackStrength);
+        }
+        
+        int maxStrength = 0;
+        for(int i=0; i < health.size() ; i++){
+            maxStrength = health.get(i);
+        }
+       
+        return maxStrength;
+    }
+    
 }

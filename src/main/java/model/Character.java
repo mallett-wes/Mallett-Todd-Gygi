@@ -10,6 +10,23 @@ public class Character implements Serializable {
     private int stamina;
     private int healthRating;
     private boolean isMainPlayer;
+    private Location currentLocation;
+
+    public boolean isIsMainPlayer() {
+        return isMainPlayer;
+    }
+
+    public void setIsMainPlayer(boolean isMainPlayer) {
+        this.isMainPlayer = isMainPlayer;
+    }
+
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
+    }
 
     public String getName() {
         return name;

@@ -22,8 +22,13 @@ public class SelectSupplyQuantityToPurchaseView extends View{
     }
     
     @Override
-    public boolean doAction(String input){
-        int quantity = Integer.parseInt(input);
+    public boolean doAction(String input) throws NumberFormatException{
+        int quantity = 0;
+        try{
+            quantity = Integer.parseInt(input);
+        }catch(NumberFormatException e){
+            System.out.println(e.getMessage());
+        }
         
         if(quantity < 0){
             System.out.println("Please enter a valid number");
@@ -33,13 +38,9 @@ public class SelectSupplyQuantityToPurchaseView extends View{
         
         SuppliesController suppliesController = new SuppliesController();
         
-        try{
-            suppliesController.purchaseSupplies(supply, quantity, Main.getGame().getTeam());
-            System.out.println(Main.getGame().getTeam().getMoneyInPocket());
-            System.out.println(Main.getGame().getTeam().getSupplies());
-        }catch(Exception e){
-            System.out.println("There was an error: " + e.getMessage());
-        }
+        suppliesController.purchaseSupplies(supply, quantity, Main.getGame().getTeam());
+        System.out.println(Main.getGame().getTeam().getMoneyInPocket());
+        System.out.println(Main.getGame().getTeam().getSupplies());
         
         GeneralStoreView view = new GeneralStoreView();
         view.display();

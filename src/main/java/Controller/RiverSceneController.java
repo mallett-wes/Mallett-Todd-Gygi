@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
+import Exceptions.RiverSceneControllerException;
 import model.Game;
 import model.RiverCrossingScene;
 /**
@@ -12,19 +13,19 @@ import model.RiverCrossingScene;
  */
 public class RiverSceneController {
     
-    public double calculateRiverDepth(String namedSeason){
+    public double calculateRiverDepth(String namedSeason) throws RiverSceneControllerException{
         double depth = 0;
         
-        if(namedSeason=="Winter"){
+        if(namedSeason.equals("Winter")){
             depth = .65 * 5;
-        }else if(namedSeason =="Spring"){
+        }else if(namedSeason.equals("Spring")){
             depth = .85 * 5;
-        }else if(namedSeason =="Fall"){
+        }else if(namedSeason.equals("Fall")){
             depth = .65 * 5;
-        }else if(namedSeason =="Summer"){
+        }else if(namedSeason.equals("Summer")){
             depth = .45 * 5;
         }else {
-            System.out.println("That is not an acceptable season");
+            throw new RiverSceneControllerException("That is not an acceptable season");
         }
                
         return depth;

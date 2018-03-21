@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Exceptions.SuppliesControllerExceptions;
 import model.Supplies;
 import model.SupplyType;
 import model.Team;
@@ -15,18 +16,19 @@ import model.Team;
  */
 public class SuppliesController {
     
-    public SupplyType purchaseSupplies(SupplyType supply, int quantity, Team team) throws Exception {
+    public SupplyType purchaseSupplies(SupplyType supply, int quantity, Team team) throws SuppliesControllerExceptions {
+        
     if(quantity < 1){
-        throw new Exception("You must enter a quantity greater than 0.");
+        throw new SuppliesControllerExceptions("You must enter a quantity greater than 0.");
     }
     if(supply == null){
-        throw new Exception("You must select a valid supply.");
+        throw new SuppliesControllerExceptions("You must select a valid supply.");
     }
     if(team == null){
-        throw new Exception("You must be on a team to purchase supplies.");
+        throw new SuppliesControllerExceptions("You must be on a team to purchase supplies.");
     }
     if(supply.getValue() < 1){
-        throw new Exception("This supply is unavailable");
+        throw new SuppliesControllerExceptions("This supply is unavailable");
     }
 
     double totalCostOfSupply = supply.getValue() * quantity;
@@ -36,7 +38,7 @@ public class SuppliesController {
         team.setMoneyInPocket(moneyInPocket - totalCostOfSupply);
         team.addSuppliesToStock(supply, quantity);
     }else{
-        throw new Exception("You do not have enough money to purchase these supplies.");
+        throw new SuppliesControllerExceptions("You do not have enough money to purchase these supplies.");
     }
 
     return supply;

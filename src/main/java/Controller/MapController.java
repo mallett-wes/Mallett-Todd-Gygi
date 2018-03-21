@@ -4,16 +4,19 @@
  * and open the template in the editor.
  */
 package Controller;
+import Exceptions.MapControlException;
+import app.Main;
 import java.util.ArrayList;
 import java.util.List;
 import model.Location;
 import model.Map;
-import model.Supplies;
+import model.Character;
 import model.Scenes;
 import model.RiverCrossingScene;
 import model.hotelScene;
 import model.TownScene;
 import model.FortScene;
+import model.Game;
 import model.GeneralStoreScene;
 import model.SceneType;
 
@@ -51,6 +54,29 @@ public class MapController {
         assignScenesToLocations(map, sceneArray);
         
         return map;
+    }
+    
+    public static Location moveActor(Character character, int newRow, int newColumn) throws MapControlException{
+        if(character == null){
+            throw new MapControlException("Chracter cannot be null");
+        }
+        
+        Map map = Main.getGame().getMap();
+        Location[][] locations = map.getLocations();
+        
+        if(newRow < 1 || newRow > map.getRowCount() || newColumn < 1 || newColumn > map.getColumnCount()){
+            throw new MapControlException("You cannot move to that location. Please choose a valid location on the map.");
+        }
+        
+        //int currentRow = character.getCurrentLocation().getRow();
+        //int currentColumn = character.getCurrentLocation().getColumn();
+        //Location oldLocation = locations[currentRow][currentColumn];
+        Location newLocation = locations[newRow][newColumn];
+        
+        character.setCurrentLocation(newLocation);
+        newLocation.setVisited(true);
+        
+        return newLocation;
     }
     
 private static Location[][] createLocations(int rowCount, int columnCount){

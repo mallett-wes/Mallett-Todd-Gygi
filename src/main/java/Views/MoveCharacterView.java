@@ -18,7 +18,7 @@ import model.Location;
  */
 public class MoveCharacterView extends View{
     
-    private String[] getInputs(){
+    public String[] getInputs(){
         Scanner keyboard = new Scanner(System.in);
         String[] inputs = new String[2];
         

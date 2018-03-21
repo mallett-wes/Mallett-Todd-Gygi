@@ -58,7 +58,8 @@ public class GameMenuView extends View{
     };
     
     private void moveForward(){
-        System.out.println("Moving on up");
+        MoveCharacterView moveCharacterView = new MoveCharacterView();
+        moveCharacterView.getInputs();
     };
     
     private void rest(){

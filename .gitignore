@@ -34,5 +34,6 @@ Compiled source #
 */build
 */dist
 */nbproject/private
+*/target
 .Trashes
 ehthumbs.d

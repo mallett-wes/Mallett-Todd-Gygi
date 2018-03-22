@@ -5,14 +5,13 @@
  */
 package Controller;
 
-import model.Supplies;
+import Exceptions.SuppliesControllerExceptions;
 import model.SupplyType;
 import model.Team;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -44,7 +43,7 @@ public class SuppliesControllerTest {
      * Test of purchaseSupplies method, of class suppliesControler.
      */
     @org.junit.Test
-    public void testPurchaseSupplies() throws Exception {
+    public void testPurchaseSupplies() throws SuppliesControllerExceptions {
         System.out.println("purchaseSupplies");
         SupplyType supply = SupplyType.OXEN;
         int quantity = 5;
@@ -54,7 +53,7 @@ public class SuppliesControllerTest {
         SupplyType result = null;
         try {
             result = instance.purchaseSupplies(supply, quantity, team);
-        } catch(Exception e) {
+        } catch(SuppliesControllerExceptions e) {
             
         }
         
@@ -62,7 +61,7 @@ public class SuppliesControllerTest {
     }
     
         @org.junit.Test
-    public void testPurchaseSupplies_nullSupplies() throws Exception {
+    public void testPurchaseSupplies_nullSupplies() throws SuppliesControllerExceptions {
         System.out.println("purchaseSupplies");
         SupplyType supply = null;
         int quantity = 5;
@@ -73,14 +72,14 @@ public class SuppliesControllerTest {
         String expectedResult = "You must select a valid supply.";
         try {
             result = instance.purchaseSupplies(supply, quantity, team);
-        } catch(Exception e) {
+        } catch(SuppliesControllerExceptions e) {
             assertEquals(expectedResult, e.getMessage());
         }
         
     }
     
             @org.junit.Test
-    public void testPurchaseSupplies_zeroQuantity() throws Exception {
+    public void testPurchaseSupplies_zeroQuantity() throws SuppliesControllerExceptions {
         System.out.println("purchaseSupplies");
         SupplyType supply = SupplyType.OXEN;
         int quantity = 0;
@@ -91,13 +90,13 @@ public class SuppliesControllerTest {
         String expectedResult = "You must enter a quantity greater than 0.";
         try {
             result = instance.purchaseSupplies(supply, quantity, team);
-        } catch(Exception e) {
+        } catch(SuppliesControllerExceptions e) {
             assertEquals(expectedResult, e.getMessage());
         }
     }
     
                 @org.junit.Test
-    public void testPurchaseSupplies_nullTeam() throws Exception {
+    public void testPurchaseSupplies_nullTeam() throws SuppliesControllerExceptions {
         System.out.println("purchaseSupplies");
         SupplyType supply = SupplyType.OXEN;
         int quantity = 1;
@@ -107,13 +106,13 @@ public class SuppliesControllerTest {
         String expectedResult = "You must be on a team to purchase supplies.";
         try {
             result = instance.purchaseSupplies(supply, quantity, team);
-        } catch(Exception e) {
+        } catch(SuppliesControllerExceptions e) {
             assertEquals(expectedResult, e.getMessage());
         }
     }
     
                     @org.junit.Test
-    public void testPurchaseSupplies_noMoney() throws Exception {
+    public void testPurchaseSupplies_noMoney() throws SuppliesControllerExceptions {
         System.out.println("purchaseSupplies");
         SupplyType supply = SupplyType.OXEN;
         int quantity = 5;
@@ -124,13 +123,13 @@ public class SuppliesControllerTest {
         String expectedResult = "You do not have enough money to purchase these supplies.";
         try {
             result = instance.purchaseSupplies(supply, quantity, team);
-        } catch(Exception e) {
+        } catch(SuppliesControllerExceptions e) {
             assertEquals(expectedResult, e.getMessage());
         }
     }
     
                         @org.junit.Test
-    public void testPurchaseSupplies_noSupply() throws Exception {
+    public void testPurchaseSupplies_noSupply() throws SuppliesControllerExceptions {
         System.out.println("purchaseSupplies");
         SupplyType supply = SupplyType.OXEN;
         int quantity = 5;
@@ -141,13 +140,13 @@ public class SuppliesControllerTest {
         String expectedResult = "This supply is unavailable";
         try {
             result = instance.purchaseSupplies(supply, quantity, team);
-        } catch(Exception e) {
+        } catch(SuppliesControllerExceptions e) {
             assertEquals(expectedResult, e.getMessage());
         }
     }
     
     @org.junit.Test
-    public void testPurchaseSupplies_boundry() throws Exception {
+    public void testPurchaseSupplies_boundry() throws SuppliesControllerExceptions {
         System.out.println("purchaseSupplies");
         SupplyType supply = SupplyType.OXEN;
         int quantity = 5;
@@ -157,7 +156,7 @@ public class SuppliesControllerTest {
         SupplyType result = null;
         try {
             result = instance.purchaseSupplies(supply, quantity, team);
-        } catch(Exception e) {
+        } catch(SuppliesControllerExceptions e) {
             
         }
         

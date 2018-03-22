@@ -14,6 +14,12 @@ import java.io.Serializable;
 public class TownScene extends Scenes implements Serializable{
     
     private String selection;
+    
+    public TownScene(){
+        this.setSceneType(SceneType.city);
+        this.setDescription("This is the town scene");
+        this.setName("Town Scene");
+    }
 
     public String getSelection() {
         return selection;

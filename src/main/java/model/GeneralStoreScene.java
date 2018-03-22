@@ -14,6 +14,11 @@ import java.io.Serializable;
 public class GeneralStoreScene extends Scenes implements Serializable{
     private int quantity;
 
+    public GeneralStoreScene(){
+        this.setSceneType(SceneType.city);
+        this.setDescription("This is the general store scene");
+        this.setName("General Store Scene");
+    }
     public int getQuantity() {
         return quantity;
     }

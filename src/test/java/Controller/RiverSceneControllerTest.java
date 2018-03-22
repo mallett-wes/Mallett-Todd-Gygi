@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Exceptions.RiverSceneControllerException;
 import model.RiverCrossingScene;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -61,10 +62,14 @@ public class RiverSceneControllerTest {
     public void testRiverDepth_InvalidSeason(){
         RiverSceneController controllerInstance = new RiverSceneController();
         String namedSeason = "1";
-        double result = 0;
-        double expectedResult= 0;
-        result = controllerInstance.calculateRiverDepth(namedSeason);
+        String expectedResult= "That is not an acceptable season";
+        String result = null;
+        try{
+         controllerInstance.calculateRiverDepth(namedSeason);   
+        }catch(RiverSceneControllerException e){
+            result = e.getMessage();
+        }
         
-         assertEquals(expectedResult, result, .0);
+         assertEquals(expectedResult, result);
     }
 }

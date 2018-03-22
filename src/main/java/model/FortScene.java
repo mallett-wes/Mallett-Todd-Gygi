@@ -14,6 +14,11 @@ import java.io.Serializable;
 public class FortScene extends Scenes implements Serializable{
     private String selection;
 
+    public FortScene(){
+        this.setSceneType(SceneType.desert);
+        this.setDescription("This is the fort scene");
+        this.setName("Fort Scene");
+    }
     public String getSelection() {
         return selection;
     }

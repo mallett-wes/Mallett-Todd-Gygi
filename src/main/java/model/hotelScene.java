@@ -15,6 +15,11 @@ public class hotelScene extends Scenes implements Serializable{
     private String deadCharacters;
     private String teamMembers;
     
+    public hotelScene(){
+        this.setSceneType(SceneType.city);
+        this.setDescription("This is the hotel scene");
+        this.setName("Hotel Scene");
+    }
     public String getDeadCharacters() {
         return deadCharacters;
     }

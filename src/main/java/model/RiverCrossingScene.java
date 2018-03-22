@@ -17,6 +17,11 @@ private double probabilityOfSuccess;
 private int riverDepth;
 private double successfulCrossing;
 
+    public RiverCrossingScene(){
+        this.setSceneType(SceneType.river);
+        this.setDescription("This is the river crossing scene");
+        this.setName("River Crossing Scene");
+    }
     public double getProbabilityOfSuccess() {
         return probabilityOfSuccess;
     }

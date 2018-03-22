@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Exceptions.CharacterControllerException;
 import java.util.Random;
 import model.Pace;
 import model.Character;
@@ -56,11 +57,16 @@ CharacterController controller;
         team.addCharacterToTeam(createCharacter(0));
         
         int lastNourishment = 2;
-        double expectedResult = -1;
+        String expectedResult = "health could not be calculated";
+        String result = null;
         
-        double result = controller.calculateTeamAverageHealth(team, lastNourishment);
+        try{
+            controller.calculateTeamAverageHealth(team, lastNourishment);
+        }catch(CharacterControllerException e){
+            result = e.getMessage();
+        }
         
-        assertEquals(expectedResult, result, .0);
+        assertTrue(result.contains(expectedResult));
     }
     
      @Test
@@ -82,11 +88,16 @@ CharacterController controller;
         Team team = new Team();
         
         int lastNourishment = 2;
-        double expectedResult = -1;
+        String expectedResult = "Team must have at least one member on it.";
+        String result = null;
         
-        double result = controller.calculateTeamAverageHealth(team, lastNourishment);
+        try{
+            controller.calculateTeamAverageHealth(team, lastNourishment);
+        }catch(CharacterControllerException e){
+            result = e.getMessage();
+        }
         
-        assertEquals(expectedResult, result, .0);
+        assertEquals(expectedResult, result);
     }
 
 

@@ -49,8 +49,7 @@ public class GameMenuView extends View{
            }
         }
         
-        ReturnMenuView returnToMenuView = new ReturnMenuView();
-        returnToMenuView.display();
+        returnToMenu();
     }
 
     private void changePace(){
@@ -59,7 +58,10 @@ public class GameMenuView extends View{
     
     private void moveForward(){
         MoveCharacterView moveCharacterView = new MoveCharacterView();
-        moveCharacterView.getInputs();
+        moveCharacterView.display();
+        
+        DayEndView dayEndView = new DayEndView();
+        dayEndView.display();
     };
     
     private void rest(){
@@ -67,16 +69,28 @@ public class GameMenuView extends View{
     };
     
     private void displayMap(){
+        System.out.println("This is the map of the game!");
+        System.out.println(createMap());
+        
+        returnToMenu();
+    }
+    
+    private void returnToMenu(){
+        ReturnMenuView returnToMenuView = new ReturnMenuView();
+        returnToMenuView.display();
+    }
+    
+    public String createMap(){
         Game game = Main.getGame();
         Location[][] locations = game.getMap().getLocations();
+        String map = "     1    2    3    4    5    6   7    8    9   10 \n";
         String row = "";
-        System.out.println("This is the map of the game!");
-        System.out.println("     1    2    3    4    5    6   7    8    9   10 ");
+        String headerRow = "     1    2    3    4    5    6   7    8    9   10 ";
         
         for(int i = 0; i<10; i++){
             row = "";
             row += "-----------------------------------------------------\n" + (i + 1);
-            //System.out.println("----------------\n" + i + 1);
+            
             for(int x = 0; x<10; x++){
                 row += " | " ;
                 Location location = locations[i][x];
@@ -85,14 +99,12 @@ public class GameMenuView extends View{
                 }else{
                     row += "??";
                 }
-                //row += "    |";
             }
             row += "|\n";
-            System.out.println(row);
+            map += row;
         }
         
-        ReturnMenuView returnToMenuView = new ReturnMenuView();
-        returnToMenuView.display();
+        return map;
     }
     
     private void displayHealth(){
@@ -120,8 +132,7 @@ public class GameMenuView extends View{
         
         System.out.println("Your team's total average health is " + characterController.calculateTeamAverageHealth(Main.getGame().getTeam(), 2));
         
-        ReturnMenuView returnToMenuView = new ReturnMenuView();
-        returnToMenuView.display();
+        returnToMenu();
     }
      
     @Override

@@ -18,9 +18,25 @@ import model.Location;
  */
 public class MoveCharacterView extends View{
     
+    @Override
+    public void display(){
+        boolean done = false;
+        do{
+            String[] value = this.getInputs();
+            if(value[0].toUpperCase().equals("Q"))
+                return;
+            
+            done = this.doAction(value);
+        }while(done = false);
+    }
+    
     public String[] getInputs(){
         Scanner keyboard = new Scanner(System.in);
         String[] inputs = new String[2];
+        
+        GameMenuView gameMenuView = new GameMenuView();
+        String map = gameMenuView.createMap();
+        System.out.println(map);
         
         System.out.println("Please select coordinates on the map that you would like to move to, enter the x coordinate first: ");
         String input1 = keyboard.nextLine();
@@ -38,8 +54,8 @@ public class MoveCharacterView extends View{
         int row = -1;
         int column = -1;
         try{
-         row = Integer.parseInt(value[0]);
-         column = Integer.parseInt(value[1]);
+         row = Integer.parseInt(value[0]) - 1;
+         column = Integer.parseInt(value[1]) - 1;
         }catch(NumberFormatException e){
             System.out.println("You must enter a valid row and column. " + e.getMessage());
         }
@@ -55,7 +71,7 @@ public class MoveCharacterView extends View{
             return false;
         }
         
-        System.out.println(newLocation.getScene().getDescription());
+        System.out.println("You have reached the " + newLocation.getScene().getSceneType().toString());
         return true;
     }
 

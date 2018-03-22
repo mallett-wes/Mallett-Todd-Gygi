@@ -14,6 +14,15 @@ import java.io.Serializable;
 public class Scenes implements Serializable {
     private String name;
     private String description;
+    private SceneType sceneType;
+
+    public SceneType getSceneType() {
+        return sceneType;
+    }
+
+    public void setSceneType(SceneType sceneType) {
+        this.sceneType = sceneType;
+    }
 
     public String getName() {
         return name;

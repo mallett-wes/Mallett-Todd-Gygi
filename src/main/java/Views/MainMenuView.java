@@ -6,9 +6,8 @@
 package Views;
 
 import Controller.GameController;
-import Controller.CharacterController;
+import Exceptions.GameControllerException;
 import app.Main;
-import java.io.InputStreamReader;
 import model.Game;
 
 /**
@@ -23,19 +22,20 @@ public class MainMenuView extends View{
         +"\nQ - Exit");
     }
 
-
-      
-
     private void startNewGame(){
        GameController gameController = new GameController();
-       Game newGame = gameController.createNewGame(Main.getCharacter());
-               if (newGame == null){
-                   System.out.println("ERROR - Failed to create new game");
-               }else{
-                   Main.setGame(newGame);
-               }
-        GameView gameView = new GameView();
-        gameView.display();
+       Game newGame = null;
+       
+       try{
+          newGame = gameController.createNewGame(Main.getCharacter()); 
+       }catch(GameControllerException e){
+           System.out.println("An error occurred: " + e.getMessage());
+       }
+       
+       Main.setGame(newGame);
+       
+       GameView gameView = new GameView();
+       gameView.display();
      };
     
     private void restartGame(){

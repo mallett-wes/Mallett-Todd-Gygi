@@ -6,6 +6,7 @@
 package Views;
 
 import Controller.GameController;
+import Exceptions.GameControllerException;
 import app.Main;
 import java.io.InputStreamReader;
 import java.util.Scanner;
@@ -24,8 +25,14 @@ public class StartExistingGameView extends View{
     @Override
     public boolean doAction(String input){
         GameController gameController = new GameController();
+        Game game = null;
         
-        Game game = gameController.startExistingGame(input);
+        try{
+           game = gameController.startExistingGame(input); 
+        }catch(GameControllerException e){
+            System.out.println("An Error Occurred: " + e.getMessage());
+        }
+        
         Main.setGame(game);
         
         return true;

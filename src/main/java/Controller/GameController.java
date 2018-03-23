@@ -5,11 +5,11 @@
  */
 package Controller;
 
+import Exceptions.GameControllerException;
 import model.Game;
 import model.Character;
 import model.Supplies;
 import model.Map;
-import model.Location;
 
 /**
  *
@@ -17,7 +17,10 @@ import model.Location;
  */
 public class GameController {
     
-    public Game createNewGame(Character player){
+    public Game createNewGame(Character player) throws GameControllerException{
+        if(player == null){
+            throw new GameControllerException("No Character Exists.");
+        }
         Game game = new Game();
         MapController mapController = new MapController();
         game.setMainPlayer(player);
@@ -96,8 +99,27 @@ public class GameController {
         return Supplies;
     }
     
-    public Game startExistingGame(String gameName){
-        return new Game();
+    public Game searchForSavedGame(String gameName) throws GameControllerException{
+        if(gameName.equals("")){
+            throw new GameControllerException("A Game Name must be provided to load a saved game.");
+        }
+        
+        Game game = new Game();
+        return game;
+    }
+    
+    public Game startExistingGame(String gameName)throws GameControllerException{
+        if(gameName.equals("")){
+            throw new GameControllerException("A Game Name must be provided to load a saved game.");
+        }
+        
+        Game existingGame = searchForSavedGame(gameName);
+        
+        if(existingGame == null){
+            throw new GameControllerException("Your game could not be found, sorry.");
+        }else{
+            return existingGame;
+        }       
     }
     
 }

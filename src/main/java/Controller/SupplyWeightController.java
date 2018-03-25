@@ -5,10 +5,11 @@
  */
 package Controller;
 
+import model.Supplies;
 import java.io.InputStreamReader;
 import java.util.Scanner;
-import model.Supplies;
-import model.Team;
+import Exceptions.SupplyWeightControllerException;
+
 
 /**
  *
@@ -16,16 +17,31 @@ import model.Team;
  */
 public class SupplyWeightController {
 
-    public boolean supplyWeightTooHeavy(Supplies supply, int quantity){
+    public boolean supplyWeightTooHeavy(Supplies supply, int quantity) throws SupplyWeightControllerException {
         int supplyWeight = supply.getWeight();
-        //Calculates weight
+        int wagonWeight = 100;
+        int maxWeight = 3000;
         long weight = quantity * supplyWeight;
+        int newWeight = 0;
 
-        //The if cases to display if supply is too heavy, not enough, or just right'.
-        if (weight > 500) {
-            return true;
-        } else {
-            return false;
-        }
+		throw new SupplyWeightControllerException("You have: " + (wagonWeight) + " lbs of supply left in your wagon");
+                
+            if(weight < 0) {
+                throw new SupplyWeightControllerException("Please enter how many pounds of food to load: ");
+                int loadedFood = reader.nextInt();
+                    
+                if(loadedFood < 0) {
+                    throw new SupplyWeightControllerException("Not enough food for travel!");
+                } else if (loadedFood + wagonWeight <= maxWeight) {
+                    throw new SupplyWeightControllerException("You have sufficient for your needs.");
+                    newWeight = wagonWeight + loadedFood;
+                } else {
+                    throw new SupplyWeightControllerException("You have exceeded the wagon's weight limit!");
+                }
+            } else { 
+                throw new SupplyWeightControllerException("You are ready for travel!");
+            }
+		
+   		throw new SupplyWeightControllerException("The wagon's weight is now " + (maxWeight - newWeight) + " lbs.");
     }
 }

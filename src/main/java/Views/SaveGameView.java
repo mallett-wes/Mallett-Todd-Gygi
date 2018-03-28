@@ -45,15 +45,19 @@ public class SaveGameView extends View{
         Boolean done = false;
         String fileName = input[0];
         Game currentGame = Main.getGame();
+        String filePath = null;
         try{
-            GameController gameController = new GameController();
-            gameController.saveGame(currentGame, fileName + ".dat");
+            GameController gameController = new GameController();            
+            filePath = gameController.saveGame(currentGame, fileName + ".dat");
         }catch(GameControllerException | IOException e){
             console.println("There was an error saving your game: " + e.getMessage());
         }
         
-        console.println(fileName + " was saved successfully!");
-        done = true;
+        if(!(filePath == null)){
+            console.println("File was saved successfully to " + filePath);
+            done = true;
+        }
+        
         return done;
     }
 

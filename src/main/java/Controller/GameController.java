@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import model.Game;
 import model.Character;
 import model.Supplies;
@@ -126,18 +128,18 @@ public class GameController {
         }       
     }
     
-    public void saveGame(Game game, String filePath) throws IOException{
+    public String saveGame(Game game, String fileName) throws IOException{
         if(game == null){
             throw new GameControllerException("No game could be found to save.");
         }
         
-        if(filePath == null || filePath.equals("")){
-            throw new GameControllerException("You must enter a file path.");
+        if(fileName == null || fileName.equals("")){
+            throw new GameControllerException("You must enter a file name.");
         }
         
         FileOutputStream outputStream = null;
         try {
-            outputStream = new FileOutputStream(filePath);
+            outputStream = new FileOutputStream(fileName);
         } catch (FileNotFoundException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -148,6 +150,9 @@ public class GameController {
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        
+        Path filePath = Paths.get(fileName);
+        return filePath.toAbsolutePath().toString();
     } 
     
 }

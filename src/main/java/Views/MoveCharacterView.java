@@ -8,7 +8,6 @@ package Views;
 import Controller.MapController;
 import Exceptions.MapControlException;
 import app.Main;
-import java.util.Scanner;
 import model.Character;
 import model.Location;
 
@@ -17,6 +16,10 @@ import model.Location;
  * @author wesmallett
  */
 public class MoveCharacterView extends View{
+    
+    public MoveCharacterView(){
+        super("Please select coordinates on the map that you would like to move to, enter the x coordinate first: ");
+    }
     
     @Override
     public void display(){
@@ -31,21 +34,18 @@ public class MoveCharacterView extends View{
     }
     
     public String[] getInputs(){
-        Scanner keyboard = new Scanner(System.in);
         String[] inputs = new String[2];
         
         GameMenuView gameMenuView = new GameMenuView();
         String map = gameMenuView.createMap();
         System.out.println(map);
+        String xCoordinate = getInput();
         
-        System.out.println("Please select coordinates on the map that you would like to move to, enter the x coordinate first: ");
-        String input1 = keyboard.nextLine();
+        this.displayMessage = "Now enter the y coordinate: ";
+        String yCoordinate = getInput();
         
-        System.out.println("Now enter the y coordinate: ");
-        String input2 = keyboard.nextLine();
-        
-        inputs[0] = input1;
-        inputs[1] = input2;
+        inputs[0] = xCoordinate;
+        inputs[1] = yCoordinate;
         
         return inputs;
     }

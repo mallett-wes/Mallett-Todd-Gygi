@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package Views;
+import app.Main;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -12,6 +18,8 @@ import java.util.Scanner;
  */
 public abstract class View implements ViewInterface {
     protected String displayMessage;
+    protected final BufferedReader keyboard = Main.getInFile();
+    protected final PrintWriter console = Main.getOutFile();
     
     public View(){
         
@@ -33,14 +41,18 @@ public abstract class View implements ViewInterface {
 }
     @Override
     public String getInput(){
-        Scanner keyboard = new Scanner(System.in);
         boolean valid = false;
         String value = null;
         
         while(!valid){
             System.out.println("\n" + this.displayMessage);
             
-            value = keyboard.nextLine();
+            try {
+                value = keyboard.readLine();
+            } catch (IOException ex) {
+                System.out.println("Error Reading Input");
+            }
+            
             value = value.toUpperCase().trim();
 
             if(value.length() <1) {

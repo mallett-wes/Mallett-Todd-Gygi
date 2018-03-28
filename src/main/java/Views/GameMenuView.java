@@ -27,10 +27,11 @@ public class GameMenuView extends View{
       super("What would you like to do?" 
             + "\nM - Move Forward" 
             + "\nR - Rest" 
-            + "\nS - View Supplies"
+            + "\nS - Save Your Game"
             + "\nP - Change Pace" 
             + "\nV - View Map"
             + "\nG - Go to General Store"
+            + "\nI - View Supplies"
             + "\nH - View Your Team's Health"
             + "\nE - Main Menu"
       );
@@ -134,6 +135,11 @@ public class GameMenuView extends View{
         
         returnToMenu();
     }
+    
+    private void saveGame(){
+        SaveGameView saveGameView = new SaveGameView();
+        saveGameView.display();
+    }
      
     @Override
     public boolean doAction(String input){
@@ -145,7 +151,9 @@ public class GameMenuView extends View{
             case "M": 
                 moveForward();
                 break;
-                
+            case "S":
+                saveGame();
+                break;
             case "R": 
                 rest();
                 break;
@@ -162,7 +170,7 @@ public class GameMenuView extends View{
             case "H": 
                 displayHealth();
                 break;
-            case "S":
+            case "I":
                 viewTeamSupplies();
                 break;          
             case "E":

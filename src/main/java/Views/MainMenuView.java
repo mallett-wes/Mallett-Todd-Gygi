@@ -72,9 +72,10 @@ public class MainMenuView extends View{
                 System.exit(0);
                 
             case "E": 
-                return true;
-               
-            default: System.out.println("Invalid menu item");
+                return false;
+            default: 
+                System.out.println("Invalid menu item");
+                return false;
         }
         
         return true;

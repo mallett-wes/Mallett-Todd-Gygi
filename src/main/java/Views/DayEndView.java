@@ -5,7 +5,6 @@
  */
 package Views;
 
-import java.util.Scanner;
 /**
  *
  * @author hiramtodd
@@ -42,7 +41,9 @@ public class DayEndView extends View {
                 GameView gameView = new GameView();
                 gameView.display();
                 break;
-                
+            case "G":
+                GameMenuView gameMenuView = new GameMenuView();
+                gameMenuView.display();
             case "H": 
                 getHelp();
                 break;

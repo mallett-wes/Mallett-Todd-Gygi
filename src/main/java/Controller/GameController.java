@@ -5,7 +5,11 @@
  */
 package Controller;
 
-import Exceptions.GameControllerException;
+import Exceptions.GameControllerException;;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import model.Game;
 import model.Character;
 import model.Supplies;
@@ -121,5 +125,29 @@ public class GameController {
             return existingGame;
         }       
     }
+    
+    public void saveGame(Game game, String filePath) throws IOException{
+        if(game == null){
+            throw new GameControllerException("No game could be found to save.");
+        }
+        
+        if(filePath == null || filePath.equals("")){
+            throw new GameControllerException("You must enter a file path.");
+        }
+        
+        FileOutputStream outputStream = null;
+        try {
+            outputStream = new FileOutputStream(filePath);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        
+        try {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(game);
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    } 
     
 }

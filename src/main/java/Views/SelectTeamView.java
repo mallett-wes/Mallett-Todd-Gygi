@@ -42,8 +42,8 @@ public class SelectTeamView extends View {
 
     @Override
     public String getInput(){
-        Scanner scanner = new Scanner(new InputStreamReader(System.in));
-        int input = 0;
+        boolean valid = false;
+        String selection = null;
         
         System.out.println("Select a Character to be on your team");
         if(!Main.getGame().getTeam().getMembers().toString().contains("Bill")){
@@ -59,16 +59,16 @@ public class SelectTeamView extends View {
             System.out.println("4 - Henry");
         }
 
-        int result = scanner.nextInt();
+        selection = this.keyboard.readLine();
 
-        while(result < 1 || result > 4){
+        while(!"1".equals(selection) || !"2".equals(selection) || !"3".equals(selection) || !"4".equals(selection)){
             System.out.println("You must select a character by entering an option listed.");
-            result = scanner.nextInt();
+            selection = this.keyboard.readLine();
         }
 
-        input = result;
+        
 
-        return Integer.toString(result);
+        return selection;
     }
 
     @Override

@@ -13,6 +13,15 @@ public class Main {
     private static Game game = null;
     private static BufferedReader inFile = null;
     private static PrintWriter outFile = null;
+    private static PrintWriter logFile = null;
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        Main.logFile = logFile;
+    }
 
     public static BufferedReader getInFile() {
         return inFile;
@@ -34,7 +43,7 @@ public class Main {
         try{
             inFile = new BufferedReader(new InputStreamReader(System.in));
             outFile = new PrintWriter(System.out, true);
-            
+            logFile = new PrintWriter("logFile.txt");
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display(); 
             return;
@@ -49,6 +58,10 @@ public class Main {
                 
                 if(outFile != null){
                  outFile.close();   
+                }
+                
+                if (logFile !=null){
+                    logFile.close();
                 }
                 
             }catch(IOException e){
@@ -73,5 +86,6 @@ public class Main {
     public static void setGame(Game game) {
         Main.game = game;
     }
-
+    
+    
 }

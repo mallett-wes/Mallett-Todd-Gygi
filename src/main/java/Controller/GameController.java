@@ -7,6 +7,8 @@ package Controller;
 
 import Exceptions.GameControllerException;;
 import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -16,6 +18,7 @@ import model.Game;
 import model.Character;
 import model.Supplies;
 import model.Map;
+import app.Main;
 
 /**
  *
@@ -136,6 +139,12 @@ public class GameController {
         if(fileName == null || fileName.equals("")){
             throw new GameControllerException("You must enter a file name.");
         }
+        
+        FileInputStream fileStream = null;
+        ObjectInputStream objectStream = new ObjectInputStream(fileStream);
+        Game saveGame = new Game();
+        saveGame = objectStream;
+         Main.setGame(game); = saveGame;
         
         FileOutputStream outputStream = null;
         try {

@@ -60,7 +60,7 @@ public class MainMenuView extends View{
                 break;
                 
             case "R": 
-                restartGame();
+                this.restartGame();
                 break;
                 
             case "H": 

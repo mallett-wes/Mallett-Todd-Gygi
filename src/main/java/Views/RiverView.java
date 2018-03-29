@@ -42,7 +42,7 @@ public class RiverView extends View {
                 dayEndView.display();
                 break;
             default:
-                 System.out.println("That is an invalid choice.");
+                 ErrorView.display(this.getClass().getName(), "That is an invalid choice.");
         }
             
             

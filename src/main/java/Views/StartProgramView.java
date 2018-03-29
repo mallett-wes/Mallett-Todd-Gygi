@@ -26,8 +26,8 @@ public class StartProgramView extends View{
             mainCharacter.setDescription("TEST");
             mainCharacter.setStamina(8);
             
-            System.out.println("Welcome to the game, " + mainCharacterName + "!");
-            System.out.println("We hope you have lots of fun!");
+            ErrorView.display(this.getClass().getName(), "Welcome to the game, " + mainCharacterName + "!");
+            ErrorView.display(this.getClass().getName(), "We hope you have lots of fun!");
         }
 
         MainMenuView mainMenuView = new MainMenuView();

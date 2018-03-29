@@ -26,7 +26,7 @@ public class StartExistingGameView extends View{
     
     private String[] getInputs(){
         String[] inputs = new String[1];
-        System.out.println("Select a saved game")
+        System.out.println("Select a saved game");
         String input1 = Main.getInFile();
         return inputs;
     }
@@ -39,7 +39,7 @@ public class StartExistingGameView extends View{
         try{
            game = gameController.startExistingGame(input); 
         }catch(GameControllerException e){
-            System.out.println("An Error Occurred: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "An Error Occurred: " + e.getMessage());
             return false;
         }
         GameMenuView gameMenuView = new GameMenuView();

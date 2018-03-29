@@ -28,7 +28,7 @@ public class ReturnMenuView extends View{
             mainMenuView.display();
             
         }else{
-            System.out.println("Invalid menu item");
+            ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }
         
         return true;

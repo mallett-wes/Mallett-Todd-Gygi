@@ -45,7 +45,7 @@ public class GettingHelpView extends View{
                 mainMenuView.display();
                 break;
             default:
-                System.out.println("Invalid Menu Option.");
+                ErrorView.display(this.getClass().getName(),"Invalid Menu Option.");
         }
         
         return true;

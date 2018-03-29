@@ -40,7 +40,7 @@ public class GameMenuView extends View{
     private void viewTeamSupplies(){
         HashMap<SupplyType, Integer> teamSupplies = Main.getGame().getTeam().getSupplies();
         if(teamSupplies.size() < 1){
-            System.out.println("You have no supplies on hand.");
+            ErrorView.display(this.getClass().getName(), "You have no supplies on hand.");
         }else{
            System.out.println("Your team's current supplies are: ");
            
@@ -116,17 +116,17 @@ public class GameMenuView extends View{
                 currentHealth = characterController.calculateIndividualCharacterHealth(Main.getGame().getTeam().getPace(), 2, member.getStamina());
                 
                 if(Main.getCharacter().equals(member)){
-                    System.out.println(member.getName() + "(you) ..... " + currentHealth);
+                    ErrorView.display(this.getClass().getName(), member.getName() + "(you) ..... " + currentHealth);
                 }else{
-                    System.out.println(member.getName() + " ..... " + currentHealth);
+                    ErrorView.display(this.getClass().getName(), member.getName() + " ..... " + currentHealth);
                 }
                 
                 
             }catch(Exception e){
                 if(Main.getCharacter().equals(member)){
-                    System.out.println(member.getName() + "(you) ..... Could Not Calculate");
+                    ErrorView.display(this.getClass().getName(), member.getName() + "(you) ..... Could Not Calculate");
                 }else{
-                    System.out.println(member.getName() + " ..... Could Not Calculate");
+                    ErrorView.display(this.getClass().getName(), member.getName() + " ..... Could Not Calculate");
                 }
             }    
         }
@@ -178,7 +178,7 @@ public class GameMenuView extends View{
                 mainMenuView.display();
                 break;
                
-            default: System.out.println("Invalid menu item");
+            default: ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }
         
         return true;

@@ -143,8 +143,8 @@ public class GameController {
         FileInputStream fileStream = null;
         ObjectInputStream objectStream = new ObjectInputStream(fileStream);
         Game saveGame = new Game();
-        saveGame = objectStream;
-         Main.setGame(game); = saveGame;
+        objectStream.(saveGame);
+        Main.setGame(game) = saveGame;
         
         FileOutputStream outputStream = null;
         try {

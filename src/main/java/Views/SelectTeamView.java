@@ -107,7 +107,7 @@ public class SelectTeamView extends View {
                 Main.getGame().getTeam().addCharacterToTeam(henry);
                 break;
             default:
-                System.out.println("Sorry, you did not enter a valid selection.");
+                ErrorView.display(this.getClass().getName(), "Sorry, you did not enter a valid selection.");
                 break;
         }
 

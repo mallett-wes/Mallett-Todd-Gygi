@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -57,7 +57,7 @@ public class MoveCharacterView extends View{
          row = Integer.parseInt(value[0]) - 1;
          column = Integer.parseInt(value[1]) - 1;
         }catch(NumberFormatException e){
-            System.out.println("You must enter a valid row and column. " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "You must enter a valid row and column. " + e.getMessage());
         }
         
         Character character = Main.getGame().getMainPlayer();
@@ -67,7 +67,7 @@ public class MoveCharacterView extends View{
         try{
             newLocation = mapController.moveActor(character, row, column);
         }catch(MapControlException e){
-            System.out.println("There was a problem moving your character to your desired location. " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "There was a problem moving your character to your desired location. " + e.getMessage());
             return false;
         }
         

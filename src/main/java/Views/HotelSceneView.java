@@ -38,7 +38,7 @@ public class HotelSceneView extends View {
                 townSceneView.display();
                 break;
             default:
-            System.out.println("That is an invalid ");
+            ErrorView.display(this.getClass().getName(), "That is an invalid ");
             break;        
         }
         

@@ -30,7 +30,7 @@ public class RiverCrossingView extends View{
                 break;
                 
             default:
-            System.out.println("Invalid input!");
+            ErrorView.display(this.getClass().getName(), "Invalid input!");
             break;
         }
         

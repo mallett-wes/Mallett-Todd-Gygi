@@ -31,7 +31,7 @@ public class SelectSupplyQuantityToPurchaseView extends View{
         }
         
         if(quantity < 0){
-            System.out.println("Please enter a valid number");
+            ErrorView.display(this.getClass().getName(), "Please enter a valid number");
             GeneralStoreView view = new GeneralStoreView();
             view.display();
         }

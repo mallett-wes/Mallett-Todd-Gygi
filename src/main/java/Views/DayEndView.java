@@ -49,7 +49,7 @@ public class DayEndView extends View {
                 break;
                 
             default:
-            System.out.println("That is an invalid selection!");
+            ErrorView.display(this.getClass().getName(), "That is an invalid selection!");
             break;
         
         }

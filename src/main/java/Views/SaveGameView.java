@@ -50,7 +50,7 @@ public class SaveGameView extends View{
             GameController gameController = new GameController();            
             filePath = gameController.saveGame(currentGame, fileName + ".dat");
         }catch(GameControllerException | IOException e){
-            console.println("There was an error saving your game: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "There was an error saving your game: " + e.getMessage());
         }
         
         if(!(filePath == null)){

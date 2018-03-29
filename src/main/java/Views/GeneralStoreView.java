@@ -66,7 +66,7 @@ public class GeneralStoreView extends View {
                 gameMenu.display();
                 return true;
             default:
-                System.out.println("Please enter a valid selection.");
+                ErrorView.display(this.getClass().getName(), "Please enter a valid selection.");
                 return true;
         }
     }

@@ -39,7 +39,7 @@ TownSceneView(){
                 hotelSceneView.display();
                 break;
             default:
-            System.out.println("That is an invalid ");
+            ErrorView.display(this.getClass().getName(), "\nThat is an invalid selection");
             break;
         
         }

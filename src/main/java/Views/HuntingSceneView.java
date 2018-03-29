@@ -48,7 +48,7 @@
 //                break;
 //                
 //            default:
-//                System.out.println("Ivalid choice!");
+//                ErrorView.display(this.getClass().getName(), "Invalid choice!");
 //                break;
 //        }
 //        return false;

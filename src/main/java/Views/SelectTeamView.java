@@ -7,13 +7,10 @@ package Views;
 
 import Controller.TeamController;
 import app.Main;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Character;
 
 /**
@@ -62,20 +59,11 @@ public class SelectTeamView extends View {
             System.out.println("4 - Henry");
         }
 
-        try {
-            selection = this.keyboard.readLine();
-        } catch (IOException ex) {
-            System.out.println("Error Could not read your input.");
-        }
-            int selectionInt = Integer.parseInt(selection);
-        while(selectionInt < 1 || selectionInt > 4){
+        selection = this.keyboard.readLine();
+
+        while(!"1".equals(selection) || !"2".equals(selection) || !"3".equals(selection) || !"4".equals(selection)){
             System.out.println("You must select a character by entering an option listed.");
-            try {
-                selection = this.keyboard.readLine();
-                selectionInt = Integer.parseInt(selection);
-            } catch (IOException ex) {
-                System.out.println("There was an error");
-            }
+            selection = this.keyboard.readLine();
         }
 
         

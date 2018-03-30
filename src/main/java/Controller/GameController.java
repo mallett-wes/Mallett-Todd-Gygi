@@ -19,8 +19,6 @@ import model.Character;
 import model.Supplies;
 import model.Map;
 import app.Main;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -110,26 +108,13 @@ public class GameController {
         return Supplies;
     }
     
-    public static Game searchForSavedGame(String gameName) throws GameControllerException {
+    public Game searchForSavedGame(String gameName) throws GameControllerException{
         if(gameName.equals("")){
             throw new GameControllerException("A Game Name must be provided to load a saved game.");
         }
-        Game saveGame = null;
         
-        try {
-            FileInputStream fileInputStream = new FileInputStream(gameName);
-            ObjectInputStream objectStream = new ObjectInputStream(fileInputStream);
-            saveGame = (Game)objectStream.readObject();
-        } catch ( IOException | ClassNotFoundException ex) {
-            throw new GameControllerException("Game Name could not be Located." + ex.getMessage());
-        }
-        
-        if(saveGame == null){
-            throw new GameControllerException("An error has occured here.");
-        }
-        Main.setGame(saveGame);
-
-        return saveGame;
+        Game game = new Game();
+        return game;
     }
     
     public Game startExistingGame(String gameName)throws GameControllerException{
@@ -155,7 +140,11 @@ public class GameController {
             throw new GameControllerException("You must enter a file name.");
         }
         
-       
+        FileInputStream fileStream = null;
+        ObjectInputStream objectStream = new ObjectInputStream(fileStream);
+        Game saveGame = new Game();
+        objectStream.(saveGame);
+        Main.setGame(game) = saveGame;
         
         FileOutputStream outputStream = null;
         try {

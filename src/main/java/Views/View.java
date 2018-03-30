@@ -42,7 +42,7 @@ public abstract class View implements ViewInterface {
         String value = null;
         
         while(!valid){
-            System.out.println("\n" + this.displayMessage);
+            console.println("\n" + this.displayMessage);
             
             try {
                 value = keyboard.readLine();
@@ -53,7 +53,7 @@ public abstract class View implements ViewInterface {
             value = value.toUpperCase().trim();
 
             if(value.length() <1) {
-              System.out.println("\n**** You must enter a value ***");
+              console.println("\n**** You must enter a value ***");
               continue;
             }
             break;

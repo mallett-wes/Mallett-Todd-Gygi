@@ -8,10 +8,6 @@ package Views;
 import Controller.GameController;
 import Exceptions.GameControllerException;
 import app.Main;
-import java.io.InputStreamReader;
-import java.util.Scanner;
-import model.Game;
-import Views.GameMenuView;
 
 /**
  *
@@ -20,7 +16,19 @@ import Views.GameMenuView;
 public class StartExistingGameView extends View{
     
     public StartExistingGameView(){
-       super("Please enter the name of the game you would like to play: ");
+        super("Please enter the name of the file you would like to load");
+    }
+    
+    @Override
+    public void display(){
+        boolean done = false;
+        do{
+            String[] value = this.getInputs();
+            if(value[0].toUpperCase().equals("Q"))
+                return;
+            
+            done = this.doAction(value);
+        }while(!done);
     }
     
     public String[] getInputs(){
@@ -33,7 +41,7 @@ public class StartExistingGameView extends View{
      
     
     public boolean doAction(String[] input){
-        String filePath = input[1];
+        String filePath = input[0];
         GameController gameController = new GameController();
         
         try{
@@ -42,6 +50,8 @@ public class StartExistingGameView extends View{
             ErrorView.display(this.getClass().getName(), "An Error Occurred: " + e.getMessage());
             return false;
         }
+        
+        console.println("Welcome back to your game, " + Main.getGame().getMainPlayer().getName() + "!");
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
         return true;

@@ -117,7 +117,7 @@ public class GameController {
         Game saveGame = null;
         
         try {
-            FileInputStream fileInputStream = new FileInputStream(gameName);
+            FileInputStream fileInputStream = new FileInputStream(gameName + ".dat");
             ObjectInputStream objectStream = new ObjectInputStream(fileInputStream);
             saveGame = (Game)objectStream.readObject();
         } catch ( IOException | ClassNotFoundException ex) {
@@ -127,7 +127,9 @@ public class GameController {
         if(saveGame == null){
             throw new GameControllerException("An error has occured here.");
         }
+        
         Main.setGame(saveGame);
+        Main.setCharacter(saveGame.getMainPlayer());
 
         return saveGame;
     }

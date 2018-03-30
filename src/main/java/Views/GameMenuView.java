@@ -50,6 +50,9 @@ public class GameMenuView extends View{
            }
         }
         
+        PrintTeamSuppliesView printSuppliesView = new PrintTeamSuppliesView();
+        printSuppliesView.display();
+        
         returnToMenu();
     }
 

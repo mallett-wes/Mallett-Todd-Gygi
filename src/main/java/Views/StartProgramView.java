@@ -19,15 +19,15 @@ public class StartProgramView extends View{
         Character mainCharacter = characterController.selectMainCharacter(mainCharacterName);
        
         if(mainCharacter == null){
-            System.out.println("There was a problem saving your player. Please try again.");
+            ErrorView.display(this.getClass().getName(), "There was a problem saving your player. Please try again.");
         }else{
             Main.setCharacter(mainCharacter);
             
             mainCharacter.setDescription("TEST");
             mainCharacter.setStamina(8);
             
-            ErrorView.display(this.getClass().getName(), "Welcome to the game, " + mainCharacterName + "!");
-            ErrorView.display(this.getClass().getName(), "We hope you have lots of fun!");
+            console.println("Welcome to the game, " + mainCharacterName + "!");
+            console.println("We hope you have lots of fun!");
         }
 
         MainMenuView mainMenuView = new MainMenuView();

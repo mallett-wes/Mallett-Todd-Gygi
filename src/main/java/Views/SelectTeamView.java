@@ -8,12 +8,8 @@ package Views;
 import Controller.TeamController;
 import app.Main;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Character;
 
 /**

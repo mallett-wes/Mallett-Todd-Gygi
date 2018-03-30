@@ -1,0 +1,5 @@
+
+
+Views.StartProgramView - Welcome to the game, KYRIE!
+
+Views.StartProgramView - We hope you have lots of fun!

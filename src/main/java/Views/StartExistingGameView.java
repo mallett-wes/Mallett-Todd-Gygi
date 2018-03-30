@@ -23,28 +23,32 @@ public class StartExistingGameView extends View{
        super("Please enter the name of the game you would like to play: ");
     }
     
-    
-    private String[] getInputs(){
+    public String[] getInputs(){
         String[] inputs = new String[1];
-        System.out.println("Select a saved game");
-        String input1 = Main.getInFile();
+        String input1 = getInput().toLowerCase();
+        inputs[0] = input1;
+        
         return inputs;
     }
-    @Override
-    public boolean doAction(String input){
-        filePath = inputs[1];
+     
+    
+    public boolean doAction(String[] input){
+        String filePath = input[1];
         GameController gameController = new GameController();
-        Game game = null;
         
         try{
-           game = gameController.startExistingGame(input); 
+           gameController.startExistingGame(filePath); 
         }catch(GameControllerException e){
             ErrorView.display(this.getClass().getName(), "An Error Occurred: " + e.getMessage());
             return false;
         }
         GameMenuView gameMenuView = new GameMenuView();
-        Main.setGame(game);
-        
+        gameMenuView.display();
         return true;
     } 
+
+    @Override
+    public boolean doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

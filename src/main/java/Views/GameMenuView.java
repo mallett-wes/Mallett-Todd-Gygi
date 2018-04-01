@@ -186,4 +186,23 @@ public class GameMenuView extends View{
         
         return true;
     }
+    
+    private void viewTeamStamina(){
+        HashMap<Character, Integer> teamStamina = Main.getName().getStamina();
+        if(teamStamina.size() < 1){
+            ErrorView.display(this.getClass().getName(), "Select Yes or No.");
+        } else {
+           System.out.println("Here are your team member's staminas: ");
+
+           for(HashMap.Entry<Character, Integer> level : teamStamina.entrySet()) {
+            Character stamina = level.getKey();
+            System.out.println(stamina.getKey() + "....." + level.getValue());
+           }
+        }
+
+        PrintTeamStaminaView printStaminaView = new PrintTeamStaminaView();
+        printStaminaView.display();
+
+        returnToMenu();
+    }
 }

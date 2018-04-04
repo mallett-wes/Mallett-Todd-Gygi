@@ -17,7 +17,7 @@ public class GettingHelpView extends View{
         "\nE - Estimate the number of resources" +
         "\nH - Harvest resources" +
         "\nD - Delivering resources to warehouse" +
-        "\nQ - Exit Help Menu");
+        "\nR - Return to Start Menu");
     }
     
     @Override
@@ -40,7 +40,7 @@ public class GettingHelpView extends View{
             case "D":
                 System.out.println("This is how you deliver resources to the warehouse.");
                 break;
-            case "Q":
+            case "R":
                 MainMenuView mainMenuView = new MainMenuView();
                 mainMenuView.display();
                 break;

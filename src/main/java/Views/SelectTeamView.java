@@ -18,6 +18,10 @@ import model.Character;
  */
 public class SelectTeamView extends View {
 
+    private static String billDescription = "This is a description of Bill. He is a hunter.";
+    private static String bobDescription = "This is a description of Bob. He is a fisher.";
+    private static String sueDescription = "This is a description of Sue. She is a gatherer.";
+    private static String henryDescription = "This is a description of Henry. He is a skilled builder.";
     public SelectTeamView(){
         super();
     }
@@ -44,33 +48,33 @@ public class SelectTeamView extends View {
         boolean valid = false;
         String selection = null;
         
-        System.out.println("Select a Character to be on your team");
+        console.println("Select 3 Characters to be on your team.");
         if(!Main.getGame().getTeam().getMembers().toString().contains("Bill")){
-            System.out.println("1 - Bill");
+            console.println("1 - Bill - " + billDescription);
         }
         if(!Main.getGame().getTeam().getMembers().toString().contains("Bob")){
-            System.out.println("2 - Bob");
+            console.println("2 - Bob - " + bobDescription);
         }
         if(!Main.getGame().getTeam().getMembers().toString().contains("Sue")){
-            System.out.println("3 - Sue");
+            console.println("3 - Sue - " + sueDescription);
         }
         if(!Main.getGame().getTeam().getMembers().toString().contains("Henry")){
-            System.out.println("4 - Henry");
+            console.println("4 - Henry - " + henryDescription);
         }
 
         try {
             selection = this.keyboard.readLine();
         } catch (IOException ex) {
-            System.out.println("Error Could not read your input.");
+            ErrorView.display(this.getClass().getName(), "Error Could not read your input, " + ex.getMessage());
         }
             int selectionInt = Integer.parseInt(selection);
         while(selectionInt < 1 || selectionInt > 4){
-            System.out.println("You must select a character by entering an option listed.");
+            ErrorView.display(this.getClass().getName(), "You must select a character by entering an option listed.");
             try {
                 selection = this.keyboard.readLine();
                 selectionInt = Integer.parseInt(selection);
             } catch (IOException ex) {
-                System.out.println("There was an error");
+                ErrorView.display(this.getClass().getName(), "There was an error: " + ex.getMessage());
             }
         }
 

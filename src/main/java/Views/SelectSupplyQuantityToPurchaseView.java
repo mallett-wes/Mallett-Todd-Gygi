@@ -27,22 +27,22 @@ public class SelectSupplyQuantityToPurchaseView extends View{
         try{
             quantity = Integer.parseInt(input);
         }catch(NumberFormatException e){
-            System.out.println(e.getMessage());
+            ErrorView.display(this.getClass().getName(), e.getMessage());
         }
         
         if(quantity < 0){
             ErrorView.display(this.getClass().getName(), "Please enter a valid number");
-            GeneralStoreView view = new GeneralStoreView();
+            PurchaseSuppliesView view = new PurchaseSuppliesView();
             view.display();
         }
         
         SuppliesController suppliesController = new SuppliesController();
         
         suppliesController.purchaseSupplies(supply, quantity, Main.getGame().getTeam());
-        System.out.println(Main.getGame().getTeam().getMoneyInPocket());
-        System.out.println(Main.getGame().getTeam().getSupplies());
+        console.println(Main.getGame().getTeam().getMoneyInPocket());
+        console.println(Main.getGame().getTeam().getSupplies());
         
-        GeneralStoreView view = new GeneralStoreView();
+        PurchaseSuppliesView view = new PurchaseSuppliesView();
         view.display();
         
         return true;

@@ -17,9 +17,11 @@ import model.Game;
 public class MainMenuView extends View{
 
     public MainMenuView(){
-        super("What would you like to do?" + "\nN - Start new game"
-        +"\nR - Restart existing game" +"\nH - Get help on how to play the game"
-        +"\nQ - Exit");
+        super("What would you like to do?" + 
+            "\nN - Start new game" +
+            "\nR - Restart existing game" +
+            "\nH - Get help on how to play the game" +
+            "\nQ - Exit Game");
     }
 
     private void startNewGame(){
@@ -29,7 +31,7 @@ public class MainMenuView extends View{
        try{
           newGame = gameController.createNewGame(Main.getCharacter()); 
        }catch(GameControllerException e){
-           System.out.println("An error occurred: " + e.getMessage());
+           ErrorView.display(this.getClass().getName(), "An error occurred: " + e.getMessage());
        }
        
        Main.setGame(newGame);
@@ -68,7 +70,7 @@ public class MainMenuView extends View{
                 break;
             
             case "Q":
-                System.out.println("Thanks for playing! Good bye!");
+                console.println("Thanks for playing! Good bye!");
                 System.exit(0);
                 
             case "E": 

@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Exceptions.PrintTeamSuppliesException;
 import app.Main;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -23,12 +24,12 @@ public class PrintTeamSuppliesView extends View{
         super("Would you like to print a list of your team's supplies? Y or N");
     }
     
-    private void printReport(String fileName){
+    private void printReport(String fileName) throws PrintTeamSuppliesException{
         PrintWriter outputStream = null;
         try {
             outputStream = new PrintWriter(fileName);
         } catch (FileNotFoundException ex) {
-            //ErrorView.display(this.getClass().getName(), "An Error Occurred: " + ex.getMessage());
+            throw new PrintTeamSuppliesException("There was a problem outputting your file: " + ex.getMessage());
         }
         
         HashMap<SupplyType, Integer> teamSupplies = Main.getGame().getTeam().getSupplies();
@@ -55,7 +56,12 @@ public class PrintTeamSuppliesView extends View{
             case "Y":
                 this.displayMessage = "What would you like to name the saved file?";
                 String fileName = this.getInput().toLowerCase();
-                printReport(fileName);
+                try{
+                    printReport(fileName);
+                }catch(PrintTeamSuppliesException e){
+                    ErrorView.display(this.getClass().getName(), e.getMessage());
+                }
+                
                 break;
             case "N":
                 break;

@@ -38,7 +38,7 @@ public class MoveCharacterView extends View{
         
         GameMenuView gameMenuView = new GameMenuView();
         String map = gameMenuView.createMap();
-        System.out.println(map);
+        console.println(map);
         String xCoordinate = getInput();
         
         this.displayMessage = "Now enter the y coordinate: ";
@@ -71,7 +71,7 @@ public class MoveCharacterView extends View{
             return false;
         }
         
-        System.out.println("You have reached the " + newLocation.getScene().getSceneType().toString());
+        console.println("You have reached the " + newLocation.getScene().getSceneType().toString());
         return true;
     }
 

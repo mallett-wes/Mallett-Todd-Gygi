@@ -5,9 +5,7 @@
  */
 package Views;
 
-import Controller.GameController;
 import app.Main;
-import model.Game;
 /**
  *
  * @author hiramtodd

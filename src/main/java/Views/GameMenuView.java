@@ -8,11 +8,8 @@ package Views;
 import Controller.CharacterController;
 import app.Main;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import model.Game;
 import model.Location;
-import model.Supplies;
 import model.SupplyType;
 
 
@@ -30,7 +27,7 @@ public class GameMenuView extends View{
             + "\nS - Save Your Game"
             + "\nP - Change Pace" 
             + "\nV - View Map"
-            + "\nG - Go to General Store"
+            + "\nG - Purchase Supplies"
             + "\nI - View Supplies"
             + "\nH - View Your Team's Health"
             + "\nE - Main Menu"
@@ -42,11 +39,11 @@ public class GameMenuView extends View{
         if(teamSupplies.size() < 1){
             ErrorView.display(this.getClass().getName(), "You have no supplies on hand.");
         }else{
-           System.out.println("Your team's current supplies are: ");
+           console.println("Your team's current supplies are: ");
            
            for(HashMap.Entry<SupplyType, Integer> item : teamSupplies.entrySet()){
                SupplyType supply = item.getKey();
-            System.out.println(supply.getKey() + "....." + item.getValue());
+            console.println(supply.getKey() + "....." + item.getValue());
            }
         }
         
@@ -57,7 +54,7 @@ public class GameMenuView extends View{
     }
 
     private void changePace(){
-        System.out.println("Pace Change");
+        console.println("Pace Change");
     };
     
     private void moveForward(){
@@ -69,12 +66,12 @@ public class GameMenuView extends View{
     };
     
     private void rest(){
-        System.out.println("RESTING.....STUB");
+        console.println("RESTING.....STUB");
     };
     
     private void displayMap(){
-        System.out.println("This is the map of the game!");
-        System.out.println(createMap());
+        console.println("This is the map of the game!");
+        console.println(createMap());
         
         returnToMenu();
     }
@@ -89,7 +86,6 @@ public class GameMenuView extends View{
         Location[][] locations = game.getMap().getLocations();
         String map = "     1    2    3    4    5    6   7    8    9   10 \n";
         String row = "";
-        String headerRow = "     1    2    3    4    5    6   7    8    9   10 ";
         
         for(int i = 0; i<10; i++){
             row = "";
@@ -119,22 +115,22 @@ public class GameMenuView extends View{
                 currentHealth = characterController.calculateIndividualCharacterHealth(Main.getGame().getTeam().getPace(), 2, member.getStamina());
                 
                 if(Main.getCharacter().equals(member)){
-                    ErrorView.display(this.getClass().getName(), member.getName() + "(you) ..... " + currentHealth);
+                    console.println(member.getName() + "(you) ..... " + currentHealth);
                 }else{
-                    ErrorView.display(this.getClass().getName(), member.getName() + " ..... " + currentHealth);
+                    console.println(member.getName() + " ..... " + currentHealth);
                 }
                 
                 
             }catch(Exception e){
                 if(Main.getCharacter().equals(member)){
-                    ErrorView.display(this.getClass().getName(), member.getName() + "(you) ..... Could Not Calculate");
+                    console.println(member.getName() + "(you) ..... Could Not Calculate");
                 }else{
-                    ErrorView.display(this.getClass().getName(), member.getName() + " ..... Could Not Calculate");
+                    console.println(member.getName() + " ..... Could Not Calculate");
                 }
             }    
         }
         
-        System.out.println("Your team's total average health is " + characterController.calculateTeamAverageHealth(Main.getGame().getTeam(), 2));
+        console.println("Your team's total average health is " + characterController.calculateTeamAverageHealth(Main.getGame().getTeam(), 2));
         
         returnToMenu();
     }
@@ -167,9 +163,8 @@ public class GameMenuView extends View{
                 changePace();
                 break;
             case "G":
-                GeneralStoreView generalStoreView = new GeneralStoreView();
-                generalStoreView.display();
-                break;
+                PurchaseSuppliesView view = new PurchaseSuppliesView();
+                view.display();
             case "H": 
                 displayHealth();
                 break;
@@ -187,22 +182,22 @@ public class GameMenuView extends View{
         return true;
     }
     
-    private void viewTeamStamina(){
-        HashMap<Character, Integer> teamStamina = Main.getName().getStamina();
-        if(teamStamina.size() < 1){
-            ErrorView.display(this.getClass().getName(), "Select Yes or No.");
-        } else {
-           System.out.println("Here are your team member's staminas: ");
-
-           for(HashMap.Entry<Character, Integer> level : teamStamina.entrySet()) {
-            Character stamina = level.getKey();
-            System.out.println(stamina.getKey() + "....." + level.getValue());
-           }
-        }
-
-        PrintTeamStaminaView printStaminaView = new PrintTeamStaminaView();
-        printStaminaView.display();
-
-        returnToMenu();
-    }
+//    private void viewTeamStamina(){
+//        HashMap<Character, Integer> teamStamina = Main.getName().getStamina();
+//        if(teamStamina.size() < 1){
+//            ErrorView.display(this.getClass().getName(), "Select Yes or No.");
+//        } else {
+//           System.out.println("Here are your team member's staminas: ");
+//
+//           for(HashMap.Entry<Character, Integer> level : teamStamina.entrySet()) {
+//            Character stamina = level.getKey();
+//            System.out.println(stamina.getKey() + "....." + level.getValue());
+//           }
+//        }
+//
+//        PrintTeamStaminaView printStaminaView = new PrintTeamStaminaView();
+//        printStaminaView.display();
+//
+//        returnToMenu();
+//    }
 }

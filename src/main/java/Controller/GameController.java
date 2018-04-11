@@ -19,8 +19,6 @@ import model.Character;
 import model.Supplies;
 import model.Map;
 import app.Main;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

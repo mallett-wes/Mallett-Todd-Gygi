@@ -51,12 +51,18 @@ public class MapController {
         Location[][] locations = map.getLocations();
         int numberOfLocationsVisited = 0;
         
-        for(int i = 0; i<10; i++){           
+        for(int i = 0; i<10; i++){  
             for(int x = 0; x<10; x++){
                 Location location = locations[i][x];
-                if(location.getScene().getName().equals("Town Scene") || location.getScene().getName().equals("General Store Scene") ||
-                        location.getScene().getName().equals("River Crossing Scene") || location.getScene().getName().equals("Fort Scene") ||
-                        location.getScene().getName().equals("Hotel Scene")){
+                String sceneName = "";
+                
+                if(location.getScene() != null && location.getScene().getName() != null){
+                    sceneName = location.getScene().getName();                    
+                }
+                
+                if(sceneName.equals("Town Scene") || sceneName.equals("General Store Scene") ||
+                        sceneName.equals("River Crossing Scene") || sceneName.equals("Fort Scene") ||
+                        sceneName.equals("Hotel Scene")){
                     if(location.isVisited()){
                         numberOfLocationsVisited++;
                     }
@@ -67,7 +73,7 @@ public class MapController {
         return (numberOfLocationsVisited == 5);
     }
     
-    public static Location moveActor(Character character, int newRow, int newColumn) throws MapControlException{
+    public Location moveActor(Character character, int newRow, int newColumn) throws MapControlException{
         if(character == null){
             throw new MapControlException("Chracter cannot be null");
         }
@@ -80,16 +86,15 @@ public class MapController {
         }
         
         Location newLocation = locations[newRow][newColumn];
+        Boolean allScenesVisited = checkIfAllScenesAreVisited();
         
-        if(newLocation == locations[9][9]){
-            if(checkIfAllScenesAreVisited()){
-                Scenes endScene = new Scenes();
-                endScene.setSceneType(SceneType.end);
-                endScene.setName("Final Scene");
-                endScene.setDescription("You have reached the end of the game!");
-                
-                locations[9][9].setScene(endScene);
-            }
+        if(newLocation == locations[9][9] && allScenesVisited){
+            Scenes endScene = new Scenes();
+            endScene.setSceneType(SceneType.end);
+            endScene.setName("Final Scene");
+            endScene.setDescription("Congratulations! You have reached the end of the game!");
+
+            locations[9][9].setScene(endScene);
         }
         
         character.setCurrentLocation(newLocation);
